@@ -2,7 +2,7 @@
 My program will be an interactive mobile game where students can learn biology concepts.
 
 ### Description of project goal:
-My program will be hosted online on Github pages, and will consist of identification minigames (i.e. identifying the parts of a cell, an interactive timed cell cycle game). The goal of this game is to teach biology concepts in an engaging manner. This is useful to students that may be trying to find the motivation to learn biology.
+My program will consist of identification minigames (i.e. identifying the parts of a cell, an interactive timed cell cycle game). The goal of this game is to teach biology concepts in an engaging manner. This is useful to students that may be trying to find the motivation to learn biology.
 
 ### User Input
 To start the program, the user can provide different options to toggle the game they would like to play. Once the game is started, the user may only provide keystrokes or screentouches.
