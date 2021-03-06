@@ -1,0 +1,26 @@
+<MenuLayout>: 
+    rows: 4
+
+    AnchorLayout: 
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+
+        canvas: 
+            Color: 
+                rgb: [.5, .324, .384] 
+            Rectangle: 
+                pos: self.pos 
+                size: self.size 
+<MenuScreen>:
+    MenuLayout:
+        Button: 
+            text: 'B1'
+            size_hint: .3, .3
+
+<SettingsScreen>:
+    BoxLayout:
+        Button:
+            text: 'My settings button'
+        Button:
+            text: 'Menu'
+            on_press: root.manager.current = 'menu'
