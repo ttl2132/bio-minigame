@@ -32,11 +32,11 @@ The data for the leaderboard will be a CSV file stored in the repo, as there wil
 | AAA      | 100   | Cell_Id   |
 | ABC      | 123   | Cell_Cycle|
 
-The data for the game images will also be stored as a CSV file, stored as Part_Name (str), File_Path (str), Cell_Id (bool), Cell_Cycle (bool). The latter two columns represent whether or not that image file is needed for the game.
-| Part_Name | File_Path | Cell_Id | Cell_Cycle |
-|-----------|-----------|---------|------------|
-| AAA       | aaa.svg   | True    | False      |
-| ABC       | abc.svg   | False   | True       |
+The data for the game images will also be stored as a CSV file, stored as Part_Name (str), File_Path (str). The game csv that will be loaded will be dependent on what game is selected. The latter two columns represent whether or not that image file is needed for the game. An example for cellid.csv is shown below.
+| Part_Name | File_Path        |
+|-----------|------------------|
+| cytoplasm | cytoplasm.svg    |
+| vacuole   | mitochondria.svg |
 
 ### Description of user interaction:
 User can request what game they want to play in the CLI, and then the Kivy window will open.
