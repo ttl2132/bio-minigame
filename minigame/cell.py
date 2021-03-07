@@ -1,26 +1,20 @@
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.image import Image
-from kivy.uix.screenmanager import Screen
-from kivy.graphics.svg import Svg
 import kivy.properties as props
-import json
-import numpy as np
+from screenfactory import ScreenFactory
 
 GAME_PREFIX = "cellid"
 
-class CellScreen(Screen):
+class CellScreen(ScreenFactory):
     cur_label = props.StringProperty()
     cur_path = props.StringProperty()
 
     def __init__(self, **kwargs):
-        super(CellScreen, self).__init__(**kwargs)
+        super(CellScreen, self).__init__(GAME_PREFIX, **kwargs)
         self.parse()
 
-    def parse(self):
-        with open(f"data/{GAME_PREFIX}.json", "r") as f:
-            df = json.load(f)
-        self.cur_label = np.random.choice(list(df.keys()))
-        self.cur_path = "images/Cytoplasm.png"
+    def generate_picture_layout(self):
+        """Randomizes the locations of each image."""
 
 
 class CellButton(ButtonBehavior, Image):
