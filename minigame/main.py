@@ -6,7 +6,9 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.gridlayout import GridLayout 
+import kivy.properties as props
+from kivy.uix.gridlayout import GridLayout
+from lb import LeaderboardScreen
 
 Builder.load_file("layouts/main.kv")
 
@@ -15,9 +17,6 @@ class MenuScreen(Screen):
     pass
 
 class MenuLayout(GridLayout):
-    pass
-
-class LeaderboardScreen(Screen):
     pass
 
 class MyApp(App):

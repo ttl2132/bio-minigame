@@ -1,3 +1,10 @@
+<MenuScreen>:
+    MenuLayout:
+        Button: 
+            text: 'Leaderboard'
+            on_press: root.manager.current = 'lb'
+            size_hint: .3, .3
+
 <MenuLayout>: 
     rows: 4
 
@@ -11,16 +18,17 @@
             Rectangle: 
                 pos: self.pos 
                 size: self.size 
-<MenuScreen>:
-    MenuLayout:
-        Button: 
-            text: 'Leaderboard'
-            on_press: root.manager.current = 'lb'
-            size_hint: .3, .3
 
 <LeaderboardScreen>:
+    Label:
+        text: root.lb_info
     BoxLayout:
         text: 'Leaderboard'
         Button:
             text: 'Menu'
             on_press: root.manager.current = 'menu'
+            size_hint: .3, .3
+        Button:
+            text: 'Test Update'
+            on_release: root.update()
+            size_hint: .3, .3
