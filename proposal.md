@@ -1,6 +1,9 @@
 # Bio Minigame
 My program will be an interactive mobile game where students can learn biology concepts.
 
+## Interactive Prototype
+A rough, interactive prototype of the expected final product is shown [here](https://www.figma.com/proto/7XvpD9wcgbdx1VMqmJGULq/Cell-Memorization?node-id=0%3A3&frame-preset-name=Desktop&scaling=scale-down). Note that the final product will be more randomized and modular than the prototype shown.
+
 ### Description of project goal:
 My program will consist of identification minigames (i.e. identifying the parts of a cell, an interactive timed cell cycle game). The goal of this game is to teach biology concepts in an engaging manner. This is useful to students that may be trying to find the motivation to learn biology.
 
@@ -13,9 +16,12 @@ To start the program, the user can provide different options to toggle the game 
 `numpy`: to randomly generate locs
 
 Tentative Classes:
-- CellPart
+- Main (includes the different screens available)
+- ScreenFactory (creates the screens for each image in the images folder)
+- LeaderboardDB (a SQL database with the leaderboard information hosted on Heroku)
+- Randomizer (a class for generating the locations of the images)
+- CellButton
 - CellLabel
-- Leaderboard
 
 ### Description of the data:
 The data for the leaderboard will be a CSV file stored in the repo, as there will be a set limit of 5 names.
