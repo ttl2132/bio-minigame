@@ -1,34 +1,26 @@
+#:include layouts/lb.kv
+#:include layouts/cell.kv
+
 <MenuScreen>:
     MenuLayout:
+        rows: 4
+        AnchorLayout: 
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Label:
+                text: 'Cell Memorization'
+        Button:
+            text: 'Start'
+            size_hint: 1, .3
         Button: 
             text: 'Leaderboard'
             on_press: root.manager.current = 'lb'
-            size_hint: .3, .3
+            size_hint: 1, .3
 
-<MenuLayout>: 
-    rows: 4
-
-    AnchorLayout: 
-        anchor_x: 'center'
-        anchor_y: 'bottom'
-
-        canvas: 
-            Color: 
-                rgb: [.5, .324, .384] 
-            Rectangle: 
-                pos: self.pos 
-                size: self.size 
-
-<LeaderboardScreen>:
-    Label:
-        text: root.lb_info
-    BoxLayout:
-        text: 'Leaderboard'
-        Button:
-            text: 'Menu'
-            on_press: root.manager.current = 'menu'
-            size_hint: .3, .3
-        Button:
-            text: 'Test Update'
-            on_release: root.update()
-            size_hint: .3, .3
+<MenuLayout>:
+    canvas:
+        Color:
+            rgb: [0,0,1]
+        Rectangle:
+            pos: self.pos
+            size: self.size

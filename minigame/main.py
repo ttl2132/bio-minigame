@@ -1,6 +1,6 @@
 import kivy
 
-kivy.require('2.0.0')  # replace with your current kivy version !
+kivy.require('2.0.0')
 
 from kivy.app import App
 from kivy.uix.label import Label
@@ -9,10 +9,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import kivy.properties as props
 from kivy.uix.gridlayout import GridLayout
 from lb import LeaderboardScreen
+from cell import CellScreen
 
 Builder.load_file("layouts/main.kv")
 
-# Declare both screens
 class MenuScreen(Screen):
     pass
 

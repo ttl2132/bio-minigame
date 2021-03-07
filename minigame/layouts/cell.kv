@@ -1,0 +1,13 @@
+<CellScreen>:
+    Label:
+        text: root.cur_name
+    BoxLayout:
+        text: 'Leaderboard'
+        Button:
+            text: 'Menu'
+            on_press: root.manager.current = 'menu'
+            size_hint: .3, .3
+        Button:
+            text: 'Test Update'
+            on_release: root.update()
+            size_hint: .3, .3

@@ -1,7 +1,7 @@
 from kivy.app import App
 from kivy.uix.label import Label
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
 import kivy.properties as props
 from kivy.uix.gridlayout import GridLayout
 import random
