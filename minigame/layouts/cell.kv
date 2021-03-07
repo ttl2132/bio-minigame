@@ -1,13 +1,18 @@
 <CellScreen>:
-    Label:
-        text: root.cur_name
-    BoxLayout:
-        text: 'Leaderboard'
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'top'
+        Label:
+            text: root.cur_label
+            size_hint: .5, .5
+    FloatLayout:
+
         Button:
             text: 'Menu'
             on_press: root.manager.current = 'menu'
             size_hint: .3, .3
-        Button:
-            text: 'Test Update'
-            on_release: root.update()
-            size_hint: .3, .3
+        CellButton:
+            source: root.cur_path
+            pos_hint: {"x":.3,"y":.3}
+            background_normal: ''
+            size_hint: .5, .5

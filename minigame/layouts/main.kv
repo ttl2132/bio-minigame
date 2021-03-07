@@ -4,7 +4,7 @@
 <MenuScreen>:
     MenuLayout:
         rows: 4
-        AnchorLayout: 
+        AnchorLayout:
             anchor_x: 'center'
             anchor_y: 'center'
             Label:
@@ -12,6 +12,7 @@
         Button:
             text: 'Start'
             size_hint: 1, .3
+            on_press: root.manager.current = 'cellid'
         Button: 
             text: 'Leaderboard'
             on_press: root.manager.current = 'lb'
@@ -21,6 +22,3 @@
     canvas:
         Color:
             rgb: [0,0,1]
-        Rectangle:
-            pos: self.pos
-            size: self.size

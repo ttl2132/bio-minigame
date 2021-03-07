@@ -1,0 +1,1 @@
+"""A class for creating a timer widget."""
