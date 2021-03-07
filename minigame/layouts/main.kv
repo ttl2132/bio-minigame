@@ -14,13 +14,13 @@
 <MenuScreen>:
     MenuLayout:
         Button: 
-            text: 'B1'
+            text: 'Leaderboard'
+            on_press: root.manager.current = 'lb'
             size_hint: .3, .3
 
-<SettingsScreen>:
+<LeaderboardScreen>:
     BoxLayout:
-        Button:
-            text: 'My settings button'
+        text: 'Leaderboard'
         Button:
             text: 'Menu'
             on_press: root.manager.current = 'menu'

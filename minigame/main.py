@@ -17,7 +17,7 @@ class MenuScreen(Screen):
 class MenuLayout(GridLayout):
     pass
 
-class SettingsScreen(Screen):
+class LeaderboardScreen(Screen):
     pass
 
 class MyApp(App):
@@ -25,7 +25,7 @@ class MyApp(App):
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
-        sm.add_widget(SettingsScreen(name='settings'))
+        sm.add_widget(LeaderboardScreen(name='lb'))
         return sm
 
 
