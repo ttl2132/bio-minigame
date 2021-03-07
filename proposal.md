@@ -18,10 +18,9 @@ To start the program, the user can provide different options to toggle the game 
 Tentative Classes:
 - Main (includes the different screens available)
 - ScreenFactory (creates the screens for each image in the images folder)
-- LeaderboardDB (a SQL database with the leaderboard information hosted on Heroku)
+- Leaderboard (a SQL database with the leaderboard information hosted on Heroku)
 - Randomizer (a class for generating the locations of the images)
-- CellButton
-- CellLabel
+- Cell (includes the changing buttons based on the cell label)
 
 ### Description of the data:
 The data for the leaderboard will be a CSV file stored in the repo, as there will be a set limit of 5 names.
