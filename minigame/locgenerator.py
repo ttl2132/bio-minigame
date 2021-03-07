@@ -1,0 +1,1 @@
+"""A class for determining the locations of each of the images."""

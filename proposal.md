@@ -19,7 +19,7 @@ Tentative Classes:
 - Main (includes the different screens available)
 - ScreenFactory (creates the screens for each image in the images folder)
 - Leaderboard (a SQL database with the leaderboard information hosted on Heroku)
-- Randomizer (a class for generating the locations of the images)
+- LocGenerator (a class for generating the locations of the images)
 - Cell (includes the changing buttons based on the cell label)
 
 ### Description of the data:
