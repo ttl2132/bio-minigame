@@ -19,7 +19,7 @@ To start the program, the user can provide different options to toggle the game 
 Tentative Classes:
 - Main: This includes the screen manager that can toggle between the different screens, as well as the landing page for the app.
 - ScreenFactory: This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
-- Leaderboard: This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed.
+- Leaderboard: This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed. It will also allow the user to input their initials if they have a record that will be stored in the database.
 - LocGenerator: This is a class for generating the locations of the images. This will likely take the most time to complete, due to the various factors that must be considered when placing each image (overlap, static placement, etc.). Furthermore, this will require removing some of the styling information from the .kv files and modifying that information in the Python files instead.
 - CellScreen(ScreenFactory): This extends the ScreenFactory class, and includes the button behavior based on the cell label. It also contains the prefix for the game required to properly parse the data.
 - Timer: This will create the timer widget that actively updates the time elapsed or resets the timer.
