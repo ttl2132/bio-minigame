@@ -8,7 +8,7 @@ A rough, interactive prototype of the expected final product is shown [here](htt
 My program will consist of identification minigames (i.e. identifying the parts of a cell, identifying the phases of the cell cycle). The goal of this game is to teach biology concepts in an engaging manner. This is useful to students that may be trying to find the motivation to learn biology.
 
 ### User Input
-To start the program, the user can provide different options to toggle the game they would like to play. Once the game is started, the user may only provide keystrokes or screentouches.
+To start the program, the user can provide different options to toggle the game they would like to play. Once the game is started, the user may only provide keystrokes or screentouches. If they make a score that is on the leaderboard, they can type their initials as text input.
 
 ### Description of the code:
  - `kivy`: to run the mobile app
@@ -66,6 +66,11 @@ The output of this program will be a new Kivy window.
 
 ### Similar Programs
 The website https://biomanbio.com/ contains similar games explaining biology concepts, but it uses HTML instead of Python. This program will be different, with a smoother interface and gameplay. Furthermore, some of the games are unplayable because they use Adobe Flash, which is no longer supported.
+
+## Overall Plan
+1. Get cell memorization game working first.
+2. Add cell cycle game to the options.
+3. Fix styling for the app.
 
 ## TODO
  - Create REST api for the leaderboard
