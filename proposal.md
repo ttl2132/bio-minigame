@@ -26,7 +26,7 @@ Tentative Classes:
 ### Description of the data:
 In order to make this library more modular, a standard prefix will be given to each game (i.e. "cellid" and "cellcycle"). All of the data will be stored with this prefix.
 
-The data for the leaderboard will be a CSV file stored in the repo, as there will be a set limit of 5 names.
+The data for the leaderboard will be a CSV file hosted online on Heroku, with the REST call game parameter being the standard prefix.
 - Initials (str): The initials of the record holder.
 - Score (int): The score of the record holder.
 
