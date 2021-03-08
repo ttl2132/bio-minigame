@@ -43,14 +43,14 @@ The data for the game images will stored as a JSON file, stored as Part_Name (st
 
 ```json
 {
-   "Cell Membrane":"images/Cell Membrane.svg",
-   "Cell Wall":"images/Cell Wall.svg",
-   "Chloroplast":"images/Chloroplast.svg",
-   "Cytoplasm":"images/Cytoplasm.svg",
-   "Endoplasmic Reticulum":"images/Endoplasmic Reticulum.svg",
-   "Mitochondria":"images/Mitochondria.svg",
-   "Nucleus":"images/Nucleus.svg",
-   "Vacuole":"images/Vacuole.svg"
+   "Cell Membrane":"images/Cell Membrane.png",
+   "Cell Wall":"images/Cell Wall.png",
+   "Chloroplast":"images/Chloroplast.png",
+   "Cytoplasm":"images/Cytoplasm.png",
+   "Endoplasmic Reticulum":"images/Endoplasmic Reticulum.png",
+   "Mitochondria":"images/Mitochondria.png",
+   "Nucleus":"images/Nucleus.png",
+   "Vacuole":"images/Vacuole.png"
 }
 ```
 
