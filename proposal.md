@@ -10,19 +10,28 @@ My program will consist of identification minigames (i.e. identifying the parts 
 ### User Input
 To start the program, the user can provide different options to toggle the game they would like to play. Once the game is started, the user may only provide keystrokes or screentouches. If they make a score that is on the leaderboard, they can type their initials as text input.
 
-### Description of the code:
+## Description of the code:
+
+### Back End
+Imported Packages:
  - `kivy`: to run the mobile app
  - `numpy`: to randomly generate locs and labelling order
  - `fastapi`: to create REST requests in order to do live updates of the leaderboard
  - `uvicorn`: to set up the hosting for the heroku app
-
 Tentative Classes:
-- Main: This includes the screen manager that can toggle between the different screens, as well as the landing page for the app.
-- ScreenFactory: This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
-- Leaderboard: This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed. It will also allow the user to input their initials if they have a record that will be stored in the database.
-- LocGenerator: This is a class for generating the locations of the images. This will likely take the most time to complete, due to the various factors that must be considered when placing each image (overlap, static placement, etc.). Furthermore, this will require removing some of the styling information from the .kv files and modifying that information in the Python files instead.
-- CellScreen(ScreenFactory): This extends the ScreenFactory class, and includes the button behavior based on the cell label. It also contains the prefix for the game required to properly parse the data.
-- Timer: This will create the timer widget that actively updates the time elapsed or resets the timer.
+ - Main: This includes the screen manager that can toggle between the different screens, as well as the landing page for the app.
+ - ScreenFactory: This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
+ - Leaderboard: This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed. It will also allow the user to input their initials if they have a record that will be stored in the database.
+ - LocGenerator: This is a class for generating the locations of the images. This will likely take the most time to complete, due to the various factors that must be considered when placing each image (overlap, static placement, etc.). Furthermore, this will require removing some of the styling information from the .kv files and modifying that information in the Python files instead.
+ - CellScreen(ScreenFactory): This extends the ScreenFactory class, and includes the button behavior based on the cell label. It also contains the prefix for the game required to properly parse the data.
+ - Timer: This will create the timer widget that actively updates the time elapsed or resets the timer.
+
+### Front End
+Kivy files (with file extension .kv) will be used for styling and binding the functions from the Python files.
+Tentative Classes:
+ - main.kv: Landing page for the game.
+ - cellid.kv: Landing page for the cellid screen.
+ - lb.kv: Landing page for the leaderboard.
 
 ### Description of the data:
 In order to make this library more modular, a standard prefix will be given to each game (i.e. "cellid" and "cellcycle"). All of the data will be stored with this prefix.
