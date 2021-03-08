@@ -65,3 +65,9 @@ The output of this program will be a new Kivy window.
 
 ### Similar Programs
 The website https://biomanbio.com/ contains similar games explaining biology concepts, but it uses HTML instead of Python. This program will be different, with a smoother interface and gameplay. Furthermore, some of the games are unplayable because they use Adobe Flash, which is no longer supported.
+
+## TODO
+ - Create REST app for the leaderboard
+ - Create a timer widget for the app
+ - Figure out how to randomly allocate each image without overlap or with depending on if there are layers (i.e. cell wall goes under everything). Includes differentiating static parts, and parts that can be numerous (i.e. a plant cell can have multiple chloroplasts).
+ - Figure out how to remove the white backgrounds on some of the images.
