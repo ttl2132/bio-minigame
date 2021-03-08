@@ -11,10 +11,10 @@ My program will consist of identification minigames (i.e. identifying the parts 
 To start the program, the user can provide different options to toggle the game they would like to play. Once the game is started, the user may only provide keystrokes or screentouches.
 
 ### Description of the code:
-`kivy`: to run the mobile app
-`numpy`: to randomly generate locs and labelling order
-`fastapi`: to create REST requests in order to do live updates of the leaderboard
-`uvicorn`: to set up the hosting for the heroku app
+ - `kivy`: to run the mobile app
+ - `numpy`: to randomly generate locs and labelling order
+ - `fastapi`: to create REST requests in order to do live updates of the leaderboard
+ - `uvicorn`: to set up the hosting for the heroku app
 
 Tentative Classes:
 - Main (includes the different screens available)
