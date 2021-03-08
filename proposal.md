@@ -17,11 +17,12 @@ To start the program, the user can provide different options to toggle the game 
  - `uvicorn`: to set up the hosting for the heroku app
 
 Tentative Classes:
-- Main (includes the different screens available)
-- ScreenFactory (creates the screens for each image in the images folder)
-- Leaderboard (a SQL database with the leaderboard information hosted on Heroku)
-- LocGenerator (a class for generating the locations of the images)
-- Cell (includes the changing buttons based on the cell label)
+- Main: This includes the screen manager that can toggle between the different screens, as well as the landing page for the app.
+- ScreenFactory: This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
+- Leaderboard: This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed.
+- LocGenerator: This is a class for generating the locations of the images. This will likely take the most time to complete, due to the various factors that must be considered when placing each image (overlap, static placement, etc.).
+- CellScreen(ScreenFactory): This extends the ScreenFactory class, and includes the button behavior based on the cell label. It also contains the prefix for the game required to properly parse the data.
+- Timer: This will create the timer widget that actively updates the time elapsed or resets the timer.
 
 ### Description of the data:
 In order to make this library more modular, a standard prefix will be given to each game (i.e. "cellid" and "cellcycle"). All of the data will be stored with this prefix.
@@ -67,7 +68,7 @@ The output of this program will be a new Kivy window.
 The website https://biomanbio.com/ contains similar games explaining biology concepts, but it uses HTML instead of Python. This program will be different, with a smoother interface and gameplay. Furthermore, some of the games are unplayable because they use Adobe Flash, which is no longer supported.
 
 ## TODO
- - Create REST app for the leaderboard
+ - Create REST api for the leaderboard
  - Create a timer widget for the app
  - Figure out how to randomly allocate each image without overlap or with depending on if there are layers (i.e. cell wall goes under everything). Includes differentiating static parts, and parts that can be numerous (i.e. a plant cell can have multiple chloroplasts).
  - Figure out how to remove the white backgrounds on some of the images.
