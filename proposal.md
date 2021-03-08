@@ -18,6 +18,7 @@ Imported Packages:
  - `numpy`: to randomly generate locs and labelling order
  - `fastapi`: to create REST requests in order to do live updates of the leaderboard
  - `uvicorn`: to set up the hosting for the heroku app
+
 Tentative Classes:
  - Main: This includes the screen manager that can toggle between the different screens, as well as the landing page for the app.
  - ScreenFactory: This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
