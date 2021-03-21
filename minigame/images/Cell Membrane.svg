@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="107.08929mm"
-   height="176.63692mm"
-   viewBox="0 0 107.08929 176.63692"
+   width="176.74646mm"
+   height="107.28356mm"
+   viewBox="0 0 176.74647 107.28356"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="702.37346"
-     inkscape:cy="320.94488"
+     inkscape:cx="628.29478"
+     inkscape:cy="27.026311"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -55,15 +55,16 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-48.886902,-63.25)">
+     transform="translate(-68.486886,-141.01595)">
     <rect
        style="fill:#00aa00;fill-rule:evenodd;stroke:#008000;stroke-width:0.532921;stroke-linecap:round;stroke-linejoin:round"
        id="rect833"
        width="106.55637"
        height="176.10399"
-       x="49.153362"
-       y="63.51646"
+       x="141.18065"
+       y="-245.15862"
        rx="9.996911"
-       ry="11.363729" />
+       ry="11.363729"
+       transform="rotate(90.072594)" />
   </g>
 </svg>
