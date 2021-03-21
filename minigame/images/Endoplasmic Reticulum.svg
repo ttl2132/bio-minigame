@@ -7,12 +7,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="136.51604mm"
+   height="120.3384mm"
+   viewBox="0 0 136.51604 120.3384"
    version="1.1"
    id="svg455"
-   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="Endoplasmic Reticulum.svg">
   <defs
      id="defs449">
@@ -1425,18 +1425,22 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.6760674"
-     inkscape:cx="830.17812"
-     inkscape:cy="695.78546"
+     inkscape:cx="743.5612"
+     inkscape:cy="597.14436"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:object-paths="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1002"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1500"
+     inkscape:window-height="938"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata452">
     <rdf:RDF>
@@ -1445,14 +1449,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-22.917393,-26.098791)">
     <path
        d="m 37.336396,78.660632 c -2.080782,2.49091 -5.68729,7.489215 -7.426801,15.157373 -0.310958,1.370775 -0.595029,2.973 -0.774217,4.780108 -0.584215,5.891777 0.04526,13.334137 3.406457,20.727497 1.439198,3.1657 3.305487,6.13826 5.584324,8.76992 2.340044,2.70234 5.023462,4.93984 7.964549,6.66282 3.309114,1.93859 6.748201,3.11301 10.13569,3.7048 4.80013,0.83857 9.062231,0.43075 11.984827,-0.0718 a 1.8344833,1.8344833 90 0 0 -0.621766,-3.6159 c -2.672884,0.45961 -6.483953,0.81554 -10.731663,0.0735 -2.987916,-0.52198 -6.007855,-1.55465 -8.912492,-3.25629 -2.583533,-1.51352 -4.959133,-3.48942 -7.045534,-5.89885 -2.033502,-2.34834 -3.714307,-5.01913 -5.017926,-7.8866 -3.051593,-6.71236 -3.626677,-13.48919 -3.095405,-18.847036 0.162608,-1.639888 0.42013,-3.091379 0.701216,-4.330457 1.568866,-6.915842 4.811189,-11.398257 6.664525,-13.616891 a 1.8344833,1.8344833 90 0 0 -2.815784,-2.352164 z"
        id="path-1"
