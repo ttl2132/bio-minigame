@@ -10,11 +10,11 @@ class ScreenFactory(Screen):
     def __init__(self, game_name, **kwargs):
         super(ScreenFactory, self).__init__(**kwargs)
         self.GAME_PREFIX = game_name
-        self.imgs = []
+        self.imgs = {}
 
     def parse(self):
         with open(f"data/{self.GAME_PREFIX}.json", "r") as f:
             pic_dict = json.load(f)
-        self.imgs = list(pic_dict.values())
-        self.cur_label = np.random.choice(list(pic_dict.keys()))
-        self.cur_path = pic_dict[self.cur_label]
+            self.imgs = pic_dict
+        self.cur_label = np.random.choice(list(self.imgs.keys()))
+        self.cur_path = self.imgs[self.cur_label]["source"]
