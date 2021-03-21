@@ -20,7 +20,7 @@ class LeaderboardScreen(Screen):
         self.get_lb()
         is_new_record = True
         if is_new_record:
-            self.enter_initials(self)
+            self.enter_initials()
 
     def enter_initials(self):
         pass
