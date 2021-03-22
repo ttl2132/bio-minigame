@@ -83,7 +83,8 @@ The website https://biomanbio.com/ contains similar games explaining biology con
 3. Fix styling for the app.
 
 ## TODO
- - Create REST api for the leaderboard
- - Create a timer widget for the app
- - Figure out how to randomly allocate each image without overlap or with depending on if there are layers (i.e. cell wall goes under everything). Includes differentiating static parts, and parts that can be numerous (i.e. a plant cell can have multiple chloroplasts).
- - Figure out how to remove the white backgrounds on some of the images.
+ - Fully connect REST api for the leaderboard to uvicorn
+ - Create a timer widget for the app that can start on tap
+ - Create image ordering in json
+ - Figure out how to randomly allocate each image without overlap. Includes differentiating parts that can be numerous (i.e. a plant cell can have multiple chloroplasts).
+ - Create working reset button
