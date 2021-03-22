@@ -9,6 +9,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
 from minigame.cell import CellScreen
 from minigame.lb import LeaderboardScreen
+import kivy.properties as props
 
 Builder.load_file("minigame/layouts/main.kv")
 
@@ -19,6 +20,9 @@ class MenuLayout(GridLayout):
     pass
 
 class MyApp(App):
+    cur_img = props.NumericProperty()
+    last_img = props.NumericProperty()
+
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))

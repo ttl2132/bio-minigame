@@ -3,20 +3,20 @@
     "source": "minigame/images/Cell Membrane.png",
     "static": "True",
     "location": {
-      "x": ".1",
+      "x": ".15",
       "y": ".1"
     },
     "width": ".7",
-    "height": ".5"
+    "height": ".6"
   },
   "Cell Wall": {
-    "source": "minigame/images/ell Wall.png",
+    "source": "minigame/images/Cell Wall.png",
     "static": "True",
     "location": {
-      "x": ".2",
-      "y": "0"
+      "x": ".1",
+      "y": ".05"
     },
-    "width": "1",
+    "width": ".8",
     "height": ".66"
   },
   "Chloroplast":{
@@ -28,10 +28,10 @@
     "static": "True",
     "location": {
       "x": ".2",
-      "y": ".05"
+      "y": ".2"
     },
-    "width": ".9",
-    "height": ".55"
+    "width": ".6",
+    "height": ".4"
   },
   "Endoplasmic Reticulum": {
     "source": "minigame/images/Endoplasmic Reticulum.png",
