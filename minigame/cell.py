@@ -13,14 +13,13 @@ class CellScreen(ScreenFactory):
         super(CellScreen, self).__init__(GAME_PREFIX, **kwargs)
         self.parse()
         self.generate_cell()
-        self.cur_label = ""
         
 
     def generate_cell(self):
         img_locs = locgenerator.generate_picture_layout(self.imgs)
         counter = 0
         for label in self.order_list:
-            self.add_widget(CellButton(label, counter, img_locs[label]["source"], img_locs[label]["loc"], img_locs[label]["size"]))
+            self.add_widget(CellButton(counter, label, img_locs[label]["source"], img_locs[label]["loc"], img_locs[label]["size"]))
             counter += 1
         self.parent
 
@@ -34,18 +33,15 @@ class CellButton(ButtonBehavior, Image):
         self.allow_stretch = True
         self.keep_ratio = False
         self.size_hint = size
-        self.label = source_path
+        self.label = label
+        self.order = order
 
     def on_press(self):
         if self.is_current():
-            print("Correct " + self.label + " " + App.get_running_app().cur_img)
+            print("Correct " + self.label + " " + str(App.get_running_app().cur_img))
             App.get_running_app().cur_img += 1
-            self.toggle_current()
         else:
-            print("Incorrect " + self.label)
+            print("Incorrect " + self.label + " " + str(App.get_running_app().cur_img))
 
     def is_current(self):
         return self.order == App.get_running_app().cur_img
-
-    def toggle_current(self):
-        self.is_current = not self.is_current
