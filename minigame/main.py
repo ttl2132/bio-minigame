@@ -14,12 +14,15 @@ import kivy.properties as props
 Builder.load_file("minigame/layouts/main.kv")
 
 class MenuScreen(Screen):
+    """The main menu screen formatted in layouts/main.kv."""
     pass
 
 class MenuLayout(GridLayout):
+    """The layout for the main menu as shown in layouts/main.kv."""
     pass
 
 class MyApp(App):
+    """Deploys the app and game information required for tracking the order."""
     cur_img = props.NumericProperty()
     last_img = props.NumericProperty()
 

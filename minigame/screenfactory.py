@@ -12,16 +12,15 @@ class ScreenFactory(Screen):
         super(ScreenFactory, self).__init__(**kwargs)
         self.GAME_PREFIX = game_name
         self.imgs = {}
-        self.order_list = []
         self.orders = ['']
 
     def parse(self):
+        """Parses the JSON file to initialize the properties for the game."""
         with open(f"minigame/data/{self.GAME_PREFIX}.json", "r") as f:
             pic_dict = json.load(f)
             self.imgs = pic_dict
-        self.order_list = list(self.imgs.keys())
-        np.random.shuffle(self.order_list)
-        self.orders = self.order_list
+        self.orders = list(self.imgs.keys())
+        np.random.shuffle(self.orders)
         print(self.orders)
         App.get_running_app().cur_img = 0
         App.get_running_app().last_img = len(self.orders)-1
