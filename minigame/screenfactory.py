@@ -13,7 +13,7 @@ class ScreenFactory(Screen):
         self.imgs = {}
 
     def parse(self):
-        with open(f"data/{self.GAME_PREFIX}.json", "r") as f:
+        with open(f"minigame/data/{self.GAME_PREFIX}.json", "r") as f:
             pic_dict = json.load(f)
             self.imgs = pic_dict
         self.cur_label = np.random.choice(list(self.imgs.keys()))

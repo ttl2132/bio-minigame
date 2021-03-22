@@ -7,10 +7,10 @@ from kivy.uix.label import Label
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
-from lb import LeaderboardScreen
-from cell import CellScreen
+from minigame.cell import CellScreen
+from minigame.lb import LeaderboardScreen
 
-Builder.load_file("layouts/main.kv")
+Builder.load_file("minigame/layouts/main.kv")
 
 class MenuScreen(Screen):
     pass

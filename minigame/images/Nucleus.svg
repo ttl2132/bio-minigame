@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="46.113094mm"
-   height="68.791664mm"
-   viewBox="0 0 46.113094 68.791664"
+   width="21.304413mm"
+   height="13.68349mm"
+   viewBox="0 0 21.304413 13.68349"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="57.547729"
-     inkscape:cy="208.63864"
+     inkscape:cx="9.2366167"
+     inkscape:cy="75.925765"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -55,20 +55,26 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-65.389879,-79.374996)">
-    <ellipse
-       style="fill:#ff8080;stroke:none;stroke-width:0.787351"
-       id="path10"
-       cx="88.446426"
-       cy="113.77083"
-       rx="23.056547"
-       ry="34.395832" />
-    <ellipse
-       style="fill:#d40000;stroke:none;stroke-width:0.86171"
-       id="path837"
-       cx="78.952553"
-       cy="102.99851"
-       rx="5.7264624"
-       ry="9.260417" />
+     transform="translate(-78.172194,-114.48861)">
+    <g
+       inkscape:label="Layer 1"
+       id="layer1-27"
+       transform="matrix(0.01611714,0.29584629,-0.30950617,0.01540582,122.61167,93.411076)"
+       style="stroke-width:3.30023">
+      <ellipse
+         style="fill:#ff8080;stroke:none;stroke-width:2.59843"
+         id="path10"
+         cx="88.446426"
+         cy="113.77083"
+         rx="23.056547"
+         ry="34.395832" />
+      <ellipse
+         style="fill:#d40000;stroke:none;stroke-width:2.84385"
+         id="path837"
+         cx="78.952553"
+         cy="102.99851"
+         rx="5.7264624"
+         ry="9.260417" />
+    </g>
   </g>
 </svg>
