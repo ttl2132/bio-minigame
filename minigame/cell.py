@@ -39,7 +39,10 @@ class CellButton(ButtonBehavior, Image):
     def on_press(self):
         if self.is_current():
             print("Correct " + self.label + " " + str(App.get_running_app().cur_img))
-            App.get_running_app().cur_img += 1
+            if App.get_running_app().cur_img == App.get_running_app().last_img:
+                print("Done")
+            else:
+                App.get_running_app().cur_img += 1
         else:
             print("Incorrect " + self.label + " " + str(App.get_running_app().cur_img))
 

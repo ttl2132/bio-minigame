@@ -24,4 +24,4 @@ class ScreenFactory(Screen):
         self.orders = self.order_list
         print(self.orders)
         App.get_running_app().cur_img = 0
-        App.get_running_app().last_img = len(self.orders)
+        App.get_running_app().last_img = len(self.orders)-1
