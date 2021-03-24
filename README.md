@@ -6,4 +6,4 @@ My program will consist of identification minigames (i.e. identifying the parts 
 
 ### In Development
 ## Installation
-```pip install -e .```
+Run ```pip install -e .``` in the base directory.
