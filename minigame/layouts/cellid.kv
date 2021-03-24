@@ -1,4 +1,5 @@
 <CellScreen>:
+
     AnchorLayout:
         anchor_x: 'left'
         anchor_y: 'top'
@@ -17,7 +18,8 @@
         anchor_x: 'center'
         anchor_y: 'top'
         Label:
-            text: "00:00.00"
+            #not updating??
+            text: "{:.1f}".format(root.time.timeText)
             size_hint: .3, .3
     AnchorLayout:
         anchor_x: 'center'

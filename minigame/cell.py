@@ -3,17 +3,24 @@ from kivy.uix.image import Image
 from minigame.screenfactory import ScreenFactory
 import minigame.locgenerator as locgenerator
 from kivy.app import App
-import kivy.properties as props
+from minigame import timer
 
 GAME_PREFIX = "cellid"
 
 class CellScreen(ScreenFactory):
     """A class for displaying the cell id game screen."""
+
+    time = timer.Timer()
+
     def __init__(self, **kwargs):
         super(CellScreen, self).__init__(GAME_PREFIX, **kwargs)
         self.parse()
         self.generate_cell()
-        
+
+        #right now this funtion is being called once the app opens which ypu can see if you uncomment
+        #the print statement in  timer.py. Want to call this function when play is clicked from main menu.
+        #sample code which I tried but struggled to run can be found in main.kv
+        self.start()
 
     def generate_cell(self):
         """Adds the cell parts to the screen."""
@@ -23,6 +30,10 @@ class CellScreen(ScreenFactory):
             self.add_widget(CellButton(counter, label, img_locs[label]["source"], img_locs[label]["loc"], img_locs[label]["size"]))
             counter += 1
         self.parent
+
+    def start(self):
+        """start timer"""
+        self.time.start_time()
 
 class CellButton(ButtonBehavior, Image):
     """A button image for a cell part."""
