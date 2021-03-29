@@ -10,6 +10,8 @@ from kivy.uix.gridlayout import GridLayout
 from minigame.cell import CellScreen
 from minigame.lb import LeaderboardScreen
 import kivy.properties as props
+from loguru import logger
+import sys
 
 Builder.load_file("minigame/layouts/main.kv")
 
@@ -25,12 +27,15 @@ class MyApp(App):
     """Deploys the app and game information required for tracking the order."""
     cur_img = props.NumericProperty()
     last_img = props.NumericProperty()
+    logger.remove()
+    logger.add(sys.stderr, format="[{level} ] [APP     ] [{time:HH:mm:ss}] {message}", level="DEBUG")
 
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
         sm.add_widget(LeaderboardScreen(name='lb'))
         sm.add_widget(CellScreen(name='cellid'))
+        logger.info("Screen manager started")
         return sm
 
 

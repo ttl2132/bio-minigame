@@ -3,6 +3,7 @@ import numpy as np
 from kivy.uix.screenmanager import Screen
 import kivy.properties as props
 from kivy.app import App
+from loguru import logger
 
 class ScreenFactory(Screen):
     orders = props.ListProperty([''])
@@ -21,6 +22,6 @@ class ScreenFactory(Screen):
             self.imgs = pic_dict
         self.orders = list(self.imgs.keys())
         np.random.shuffle(self.orders)
-        print(self.orders)
+        logger.debug(f"Image Order: {self.orders}")
         App.get_running_app().cur_img = 0
         App.get_running_app().last_img = len(self.orders)-1

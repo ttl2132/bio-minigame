@@ -4,6 +4,7 @@ from minigame.screenfactory import ScreenFactory
 import minigame.locgenerator as locgenerator
 from kivy.app import App
 from minigame.timer import Timer
+from loguru import logger
 
 GAME_PREFIX = "cellid"
 
@@ -32,6 +33,7 @@ class CellScreen(ScreenFactory):
         self.parent
 
     def reset(self):
+        """Resets the timer and game with the same layout."""
         self.time.reset_time()
         App.get_running_app().cur_img = 0
 
@@ -51,13 +53,13 @@ class CellButton(ButtonBehavior, Image):
     def on_press(self):
         """Checks if the cell part that was tapped is correct."""
         if self.is_current():
-            print("Correct " + self.label + " " + str(App.get_running_app().cur_img))
+            logger.debug(f"Correct {self.label}")
             if App.get_running_app().cur_img == App.get_running_app().last_img:
-                print("Done")
+                logger.debug("Done")
             else:
                 App.get_running_app().cur_img += 1
         else:
-            print("Incorrect " + self.label + " " + str(App.get_running_app().cur_img))
+            logger.debug(f"Incorrect {self.label}")
 
     def is_current(self):
         """Returns if the cell part matches the current cell part label."""
