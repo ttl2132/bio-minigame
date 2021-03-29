@@ -12,13 +12,12 @@
         anchor_y: 'top'
         Button:
             text: 'Reset'
-            on_press: root.manager.current = 'menu'
+            on_press: root.time.reset_time()
             size_hint: .3, .3
     AnchorLayout:
         anchor_x: 'center'
         anchor_y: 'top'
         Label:
-            #not updating??
             text: "{:.1f}".format(root.time.timeText)
             size_hint: .3, .3
     AnchorLayout:
