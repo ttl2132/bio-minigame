@@ -18,9 +18,8 @@ class CellScreen(ScreenFactory):
         self.generate_cell()
 
     def on_enter(self):
-        #right now this funtion is being called once the app opens which ypu can see if you uncomment
-        #the print statement in  timer.py. Want to call this function when play is clicked from main menu.
-        #sample code which I tried but struggled to run can be found in main.kv
+        """Starts the timer when moved to the game screen."""
+        self.time.reset_time()
         self.time.start_time()
 
     def generate_cell(self):
