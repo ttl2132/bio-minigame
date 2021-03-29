@@ -31,6 +31,10 @@ class CellScreen(ScreenFactory):
             counter += 1
         self.parent
 
+    def reset(self):
+        self.time.reset_time()
+        App.get_running_app().cur_img = 0
+
 class CellButton(ButtonBehavior, Image):
     """A button image for a cell part."""
     def __init__(self, order, label, source_path, loc, size, **kwargs):
