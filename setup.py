@@ -11,7 +11,7 @@ from setuptools import setup
 setup(
     name="bio-minigame",
     version="0.0.1",
-    install_requires=["pandas","numpy","kivy","fastapi","uvicorn","pydantic"],
+    install_requires=["pandas","numpy","kivy","fastapi","uvicorn","loguru"],
     packages=[],
     setup_requires=['setuptools_scm'],
     include_package_data=True,
