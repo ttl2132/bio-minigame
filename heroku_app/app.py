@@ -23,7 +23,7 @@ def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
     data = pd.read_csv(f"{LB_URL}/leaderboard.csv")
     logger.debug(data)
-    return 
+    return data
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
