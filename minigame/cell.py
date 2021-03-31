@@ -5,6 +5,7 @@ import minigame.locgenerator as locgenerator
 from kivy.app import App
 from minigame.timer import Timer
 from loguru import logger
+import numpy as np
 
 GAME_PREFIX = "cellid"
 
@@ -25,11 +26,19 @@ class CellScreen(ScreenFactory):
 
     def generate_cell(self):
         """Adds the cell parts to the screen."""
-        img_locs = locgenerator.generate_picture_layout(self.imgs)
-        counter = 0
-        for label in self.orders:
-            self.add_widget(CellButton(counter, label, img_locs[label]["source"], img_locs[label]["loc"], img_locs[label]["size"]))
-            counter += 1
+        img_locs = locgenerator.generate_picture_layout(self.imgs, self.load_order)
+        order = list(range(len(self.imgs)))
+        np.random.shuffle(order)
+        label_order = [""] * len(self.imgs)
+        for i in range(len(img_locs)):
+            count = order[i]
+            img_info = img_locs[i]
+            self.add_widget(CellButton(count, img_info["label"], img_info["source"], img_info["loc"], img_info["size"]))
+            label_order[order[i]] = img_info["label"]
+        logger.debug(label_order)
+        self.orders = label_order
+        App.get_running_app().cur_img = 0
+        App.get_running_app().last_img = len(self.orders)-1
         self.parent
 
     def reset(self):

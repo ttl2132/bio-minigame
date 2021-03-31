@@ -1,52 +1,55 @@
 {
-  "Cell Membrane": {
-    "source": "minigame/images/Cell Membrane.png",
-    "static": "True",
-    "location": {
-      "x": ".15",
-      "y": ".1"
+  "load_order": ["Cell Wall", "Cell Membrane", "Cytoplasm"],
+  "images": {
+    "Cell Membrane": {
+      "source": "minigame/images/Cell Membrane.png",
+      "static": "True",
+      "location": {
+        "x": ".15",
+        "y": ".1"
+      },
+      "width": ".7",
+      "height": ".6"
     },
-    "width": ".7",
-    "height": ".6"
-  },
-  "Cell Wall": {
-    "source": "minigame/images/Cell Wall.png",
-    "static": "True",
-    "location": {
-      "x": ".1",
-      "y": ".05"
+    "Cell Wall": {
+      "source": "minigame/images/Cell Wall.png",
+      "static": "True",
+      "location": {
+        "x": ".1",
+        "y": ".05"
+      },
+      "width": ".8",
+      "height": ".66"
     },
-    "width": ".8",
-    "height": ".66"
-  },
-  "Chloroplast":{
-    "source": "minigame/images/Chloroplast.png",
-    "static": "False"
-  },
-  "Cytoplasm":{
-    "source": "minigame/images/Cytoplasm.png",
-    "static": "True",
-    "location": {
-      "x": ".2",
-      "y": ".2"
+    "Chloroplast":{
+      "source": "minigame/images/Chloroplast.png",
+      "static": "False"
     },
-    "width": ".6",
-    "height": ".4"
-  },
-  "Endoplasmic Reticulum": {
-    "source": "minigame/images/Endoplasmic Reticulum.png",
-    "static": "False"
-  },
-  "Mitochondria": {
-    "source": "minigame/images/Mitochondria.png",
-    "static": "False"
-  },
-  "Nucleus": {
-    "source": "minigame/images/Nucleus.png",
-    "static": "False"
-  },
-  "Vacuole": {
-    "source": "minigame/images/Vacuole.png",
-    "static": "False"
+    "Cytoplasm":{
+      "source": "minigame/images/Cytoplasm.png",
+      "static": "True",
+      "location": {
+        "x": ".2",
+        "y": ".2"
+      },
+      "width": ".6",
+      "height": ".4"
+    },
+    "Endoplasmic Reticulum": {
+      "source": "minigame/images/Endoplasmic Reticulum.png",
+      "static": "False"
+    },
+    "Mitochondria": {
+      "source": "minigame/images/Mitochondria.png",
+      "static": "False"
+    },
+    "Nucleus": {
+      "source": "minigame/images/Nucleus.png",
+      "static": "False"
+    },
+    "Vacuole": {
+      "source": "minigame/images/Vacuole.png",
+      "static": "False"
+    }
   }
 }
