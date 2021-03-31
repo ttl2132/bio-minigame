@@ -2,3 +2,4 @@ requests
 pandas
 fastAPI
 uvicorn
+loguru
