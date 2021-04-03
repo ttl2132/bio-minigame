@@ -25,8 +25,6 @@ class MenuLayout(GridLayout):
 
 class MyApp(App):
     """Deploys the app and game information required for tracking the order."""
-    cur_img = props.NumericProperty()
-    last_img = props.NumericProperty()
     logger.remove()
     logger.add(sys.stderr, format="[{level} ] [APP     ] [{time:HH:mm:ss}] {message}", level="DEBUG")
 
