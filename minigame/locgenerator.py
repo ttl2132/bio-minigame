@@ -22,16 +22,20 @@ def get_img_info(imgs, label, bounds):
         img_info["size"] = (name["width"], name["height"])
         img_info["source"] = name["source"]
     else:
-        img_info["loc"] = get_rand_coords(bounds, name["bounded"])
         if "width" in name.keys():
             img_info["size"] = (name["width"], name["height"])
         else:
-            img_info["size"] = (None,None)
+            img_info["size"] = (0.1,0.1)
+        img_info["loc"] = get_rand_coords(bounds, name["bounded"], img_info["size"])
         img_info["source"] = name["source"]
     return img_info
 
-def get_rand_coords(bounds, bounded):
+def get_rand_coords(bounds, bounded, img_size):
     if bounded == "True":
-        return {"x": np.random.uniform(0,1), "y": np.random.uniform(0,.67)}
+        logger.debug(img_size)
+        return {
+            "x": np.random.uniform(float(bounds["x"]),float(bounds["x"])+float(bounds["width"])-float(img_size[0])),
+            "y": np.random.uniform(float(bounds["y"]),float(bounds["y"])+float(bounds["height"])-float(img_size[1]))
+            }
     else:
         return {"x": np.random.uniform(0,1), "y": np.random.uniform(0,.67)}
