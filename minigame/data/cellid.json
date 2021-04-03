@@ -4,9 +4,10 @@
     "Cell Membrane": {
       "source": "minigame/images/Cell Membrane.png",
       "static": "True",
+      "bounded": "False",
       "location": {
         "x": ".15",
-        "y": ".1"
+        "y": ".05"
       },
       "width": ".7",
       "height": ".6"
@@ -14,42 +15,61 @@
     "Cell Wall": {
       "source": "minigame/images/Cell Wall.png",
       "static": "True",
+      "bounded": "False",
       "location": {
         "x": ".1",
-        "y": ".05"
+        "y": ".03"
       },
       "width": ".8",
       "height": ".66"
     },
     "Chloroplast":{
       "source": "minigame/images/Chloroplast.png",
-      "static": "False"
+      "static": "False",
+      "bounded": "True",
+      "width": "0.05",
+      "height": "0.1"
     },
     "Cytoplasm":{
       "source": "minigame/images/Cytoplasm.png",
       "static": "True",
+      "bounded": "False",
       "location": {
         "x": ".2",
-        "y": ".2"
+        "y": ".1"
       },
       "width": ".6",
-      "height": ".4"
+      "height": ".5"
     },
     "Endoplasmic Reticulum": {
       "source": "minigame/images/Endoplasmic Reticulum.png",
-      "static": "False"
+      "static": "False",
+      "bounded": "True"
     },
     "Mitochondria": {
       "source": "minigame/images/Mitochondria.png",
-      "static": "False"
+      "static": "False",
+      "bounded": "True",
+      "width": "0.075",
+      "height": "0.05"
     },
     "Nucleus": {
       "source": "minigame/images/Nucleus.png",
-      "static": "False"
+      "static": "False",
+      "bounded": "True"
     },
     "Vacuole": {
       "source": "minigame/images/Vacuole.png",
-      "static": "False"
+      "static": "False",
+      "bounded": "True",
+      "width": ".2",
+      "height": ".4"
     }
+  },
+  "bounds": {
+    "x":".2",
+    "y":".1",
+    "width": ".6",
+    "height": ".5"
   }
 }

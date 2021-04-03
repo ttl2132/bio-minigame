@@ -18,6 +18,7 @@ class ImageButton(ButtonBehavior, Image):
 
     def on_press(self):
         """Checks if the cell part that was tapped is correct."""
+        logger.debug(f"{self.label}: {self.height}, {self.width}, coords ({self.x},{self.y})")
         if self.is_current():
             logger.debug(f"Correct {self.label}")
             if self.parent.cur_img == self.parent.last_img:

@@ -19,10 +19,11 @@ class ScreenFactory(Screen):
         self.imgs = {}
         self.button_refs = []
         self.orders = ['']
+        self.bounds = {}
 
     def generate_cell(self):
         """Adds the cell parts to the screen."""
-        img_locs = locgenerator.generate_picture_layout(self.imgs, self.load_order)
+        img_locs = locgenerator.generate_picture_layout(self.imgs, self.load_order, self.bounds)
         order = list(range(len(self.imgs)))
         np.random.shuffle(order)
         label_order = [""] * len(self.imgs)
@@ -48,6 +49,7 @@ class ScreenFactory(Screen):
             self.imgs = pic_dict["images"]
         logger.debug(len(self.imgs))
         self.load_order = pic_dict["load_order"]
+        self.bounds = pic_dict["bounds"]
 
     def on_enter(self):
         """Starts the timer when moved to the game screen."""
@@ -60,4 +62,4 @@ class ScreenFactory(Screen):
         for button in self.button_refs:
             self.remove_widget(button)
         self.button_refs.clear()
-        self.cur_img = 0
+        self.generate_cell()
