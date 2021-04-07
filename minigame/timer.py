@@ -23,5 +23,5 @@ class Timer(Widget):
         self.timeText = 0
 
     def start_time(self):
-        # begins a clock interval running at 60 FPS calling update_time
+        """Begins a clock interval running at 60 FPS calling update_time"""
         Clock.schedule_interval(self.update_time, 1.0 / 60.0)
