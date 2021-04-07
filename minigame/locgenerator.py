@@ -35,6 +35,7 @@ def generate_picture_layout(imgs, load_order, bounds):
 
 
 def get_img_info(imgs, label, bounds):
+    """Returns image info for Kivy and bounding box coordinates."""
     name = imgs[label]
     img_info = {"label": label}
     if name["static"] == "True":
@@ -60,6 +61,7 @@ def get_img_info(imgs, label, bounds):
 
 
 def get_rand_coords(bounds, bounded, img_size):
+    """Generates random coordinates for an image based on size and bounds."""
     if bounded == "True":
         return {
             "x": np.random.uniform(
@@ -73,10 +75,11 @@ def get_rand_coords(bounds, bounded, img_size):
         return {"x": np.random.uniform(0, 1), "y": np.random.uniform(0, .67)}
 
 def check_overlap(bl1, tr1, bl2, tr2):
-    # If one rectangle is on left side of other
+    """Checks for overlap using bounding box coordinates for a button."""
+    # Check horizontal overlap
     if (bl1["x"] >= tr2["x"] or tr1["x"] <= bl2["x"]):
         return False
-    # If one rectangle is above other
+    # Check vertical overlap
     if (tr1["y"] <= bl2["y"] or tr2["y"] <= bl1["y"]):
         return False
     return True
