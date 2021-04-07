@@ -20,9 +20,6 @@ def generate_picture_layout(imgs, load_order, bounds):
                 info, bot_left, top_right = get_img_info(imgs, label, bounds)
                 img_locs.append(info)
                 coords.append((bot_left, top_right))
-        logger.debug(f"Img info:\n{img_locs}")
-        logger.debug(f"Coordinates Length:\n{len(coords)}")
-        logger.debug(f"Coordinates:\n{coords}")
         for i in range(len(coords)):
             for j in range(i+1, len(coords)):
                 bl1, tr1 = coords[i]
@@ -30,6 +27,7 @@ def generate_picture_layout(imgs, load_order, bounds):
                 if check_overlap(bl1, tr1, bl2, tr2):
                     logger.debug("Detected overlap")
                     invalid_layout = True
+                    break
     logger.debug("Returning non-overlapping")
     return img_locs
 
