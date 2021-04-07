@@ -3,6 +3,7 @@ import kivy.properties as props
 import random
 import requests
 
+
 class LeaderboardScreen(Screen):
     lb_info = props.StringProperty()
 

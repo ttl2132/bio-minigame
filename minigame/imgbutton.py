@@ -3,6 +3,7 @@ from kivy.uix.image import Image
 from kivy.app import App
 from loguru import logger
 
+
 class ImageButton(ButtonBehavior, Image):
     """A button image for a cell part."""
     def __init__(self, order, label, source_path, loc, size, **kwargs):
@@ -18,7 +19,10 @@ class ImageButton(ButtonBehavior, Image):
 
     def on_press(self):
         """Checks if the cell part that was tapped is correct."""
-        logger.debug(f"{self.label}: {self.height}, {self.width}, coords ({self.x},{self.y})")
+        logger.debug(
+            f"{self.label}: {self.height}, {self.width}" +
+            f" coords ({self.x},{self.y})"
+        )
         if self.is_current():
             logger.debug(f"Correct {self.label}")
             if self.parent.cur_img == self.parent.last_img:

@@ -7,6 +7,7 @@ from minigame.imgbutton import ImageButton
 import numpy as np
 import minigame.locgenerator as locgenerator
 
+
 class ScreenFactory(Screen):
     orders = props.ListProperty([''])
     cur_img = props.NumericProperty()
@@ -23,7 +24,9 @@ class ScreenFactory(Screen):
 
     def generate_cell(self):
         """Adds the cell parts to the screen."""
-        img_locs = locgenerator.generate_picture_layout(self.imgs, self.load_order, self.bounds)
+        img_locs = locgenerator.generate_picture_layout(
+            self.imgs, self.load_order, self.bounds
+        )
         order = list(range(len(self.imgs)))
         np.random.shuffle(order)
         label_order = [""] * len(self.imgs)

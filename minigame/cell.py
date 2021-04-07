@@ -6,6 +6,7 @@ import numpy as np
 
 GAME_PREFIX = "cellid"
 
+
 class CellScreen(ScreenFactory):
     """A class for displaying the cell id game screen."""
 
