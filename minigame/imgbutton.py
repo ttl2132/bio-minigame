@@ -26,7 +26,9 @@ class ImageButton(ButtonBehavior, Image):
         if self.is_current():
             logger.debug(f"Correct {self.label}")
             if self.parent.cur_img == self.parent.last_img:
-                logger.debug("Done")
+                self.parent.time.stop_time()
+                time = self.parent.time.timeText
+                logger.debug(f"Done time: {time}")
             else:
                 self.parent.cur_img += 1
         else:

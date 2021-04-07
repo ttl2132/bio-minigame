@@ -72,6 +72,7 @@ def get_rand_coords(bounds, bounded, img_size):
     else:
         return {"x": np.random.uniform(0, 1), "y": np.random.uniform(0, .67)}
 
+
 def check_overlap(bl1, tr1, bl2, tr2):
     """Checks for overlap using bounding box coordinates for a button."""
     # Check horizontal overlap

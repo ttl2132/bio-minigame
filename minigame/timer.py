@@ -21,7 +21,12 @@ class Timer(Widget):
     def reset_time(self):
         """Resets the time elapsed."""
         self.timeText = 0
+        self.start_time()
 
     def start_time(self):
         """Begins a clock interval running at 60 FPS calling update_time"""
         Clock.schedule_interval(self.update_time, 1.0 / 60.0)
+
+    def stop_time(self):
+        """Stops time."""
+        Clock.unschedule(self.update_time)
