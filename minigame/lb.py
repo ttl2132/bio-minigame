@@ -7,7 +7,7 @@ from kivy.graphics import Color, Rectangle
 from loguru import logger
 import random
 import requests
-import json
+import pandas as pd
 
 
 class LeaderboardScreen(Screen):
@@ -57,7 +57,7 @@ class Leaderboard(GridLayout):
             self.remove_widget(old_label)
         if lb == None:
             lb=self.get_lb()
-        num_ranks = len(lb["Initials"].keys())
+        num_ranks = lb.shape[0]
         for i in range(num_ranks):
             initials_label = Label(text=lb["Initials"][str(i)])
             score_label = Label(text=str(lb["Time"][str(i)]))
@@ -70,7 +70,7 @@ class Leaderboard(GridLayout):
     def update(self, finish_time=None):
         """Will update leaderboard based on new time"""
         db_lb = self.get_lb()
-        num_ranks = len(db_lb.keys())
+        num_ranks = db_lb.shape[0]
         if finish_time:
             for i in range(num_ranks):
                 if (db_lb["Initials"][str(i)] == "N/A"
@@ -79,13 +79,15 @@ class Leaderboard(GridLayout):
                     lb = requests.post(
                         f"{HEROKU_URL}/scores/{initials}/{finish_time}/{i}"
                         )
-        self.generate_leaderboard(lb)
+                    logger.debug(lb.json)
+                    self.generate_leaderboard(lb.json)
+        self.generate_leaderboard()
 
     def get_lb(self):
         """Will make get REST call to heroku app."""
         db_info = requests.get(f"{HEROKU_URL}/scores")
         if db_info.status_code == 200:
-            return db_info.json()
+            return pd.DataFrame.from_dict(db_info.json())
         else:
             logger.error(f"{db_info.status_code}: Error returned.")
 
