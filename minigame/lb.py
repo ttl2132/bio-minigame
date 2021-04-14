@@ -70,7 +70,7 @@ class Leaderboard(GridLayout):
     def update(self, finish_time=None):
         """Will update leaderboard based on new time"""
         db_lb = self.get_lb()
-        num_ranks = len(db_lb["Initials"].keys())
+        num_ranks = db_lb.shape[0]
         if finish_time:
             for i in range(num_ranks):
                 if (db_lb["Initials"][str(i)] == "N/A"
