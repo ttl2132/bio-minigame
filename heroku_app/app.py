@@ -24,7 +24,7 @@ def update_scores(initials: str, score: str, rank: int):
     for i in range(num_ranks-1, num_ranks-rank, -1):
         logger.debug(db.iloc[i])
         db.iloc[i] = db.iloc[i-1]
-    logger.debug(db.iloc[i])
+        logger.debug(db.iloc[i])
     db.iloc[rank, 0] = initials
     db.iloc[rank, 1] = score
     push(db.to_csv(index=False))
