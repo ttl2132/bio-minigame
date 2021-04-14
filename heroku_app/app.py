@@ -12,12 +12,12 @@ LB_URL = "https://raw.githubusercontent.com/ttl2132/ttl2132.github.io/master/dat
 HEROKU_URL = "http://bio-minigame.herokuapp.com"
 
 @app.get("/")
-def landing_page():
+async def landing_page():
     "Landing page for bio-minigame."
     return "Hi! You can find the leaderboard at this URL/scores"
 
 @app.post("/scores/{initials}/{score}/{rank}")
-def update_scores(initials: str, score: str, rank: int):
+async def update_scores(initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
     db = get_scores()
     num_ranks = len(db["Time"].keys())
@@ -28,10 +28,10 @@ def update_scores(initials: str, score: str, rank: int):
     db.iloc[rank, 1] = score
     push(db.to_csv(index=False))
     logger.debug(f"\n{db.to_csv(index=False)}")
-    return "posted"
+    return db
 
 @app.get("/scores")
-def get_scores():
+async def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
     data = pd.read_csv(f"{LB_URL}/leaderboard.csv", index_col=0)
     data = data.fillna("N/A")

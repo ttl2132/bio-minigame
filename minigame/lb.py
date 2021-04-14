@@ -51,11 +51,12 @@ class Leaderboard(GridLayout):
         self.bg.pos = self.pos
         self.bg.size = self.size
 
-    def generate_leaderboard(self):
+    def generate_leaderboard(self, lb=None):
         """Used for created the widgets to display in the grid layout"""
         for old_label in self.label_refs:
             self.remove_widget(old_label)
-        lb = self.get_lb()
+        if lb == None:
+            lb=self.get_lb()
         num_ranks = len(lb["Initials"].keys())
         for i in range(num_ranks):
             initials_label = Label(text=lb["Initials"][str(i)])
@@ -75,10 +76,10 @@ class Leaderboard(GridLayout):
                 if (db_lb["Initials"][str(i)] == "N/A"
                     or finish_time < int(db_lb["Time"][str(i)])):
                     initials = self.enter_initials()
-                    requests.post(
+                    lb = requests.post(
                         f"{HEROKU_URL}/scores/{initials}/{finish_time}/{i}"
                         )
-        self.generate_leaderboard()
+        self.generate_leaderboard(lb)
 
     def get_lb(self):
         """Will make get REST call to heroku app."""
