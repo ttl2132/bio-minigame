@@ -15,7 +15,7 @@ def landing_page():
     return "Hi! You can find the leaderboard at this URL/scores"
 
 @app.post("/scores/{initials}/{score}/{rank}")
-def update_scores(initials: str, score: str):
+def update_scores(initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
     db = get_scores()
     num_ranks = len(db["Time"].keys())
