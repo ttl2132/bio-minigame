@@ -20,7 +20,7 @@ def update_scores(initials: str, score: str, rank: int):
     db = get_scores()
     num_ranks = len(db["Time"].keys())
     for i in range(num_ranks-1, num_ranks-rank, -1):
-        logging.debug(f"orig:{db["Initials"][str(i)]}")
+        logger.debug(db["Initials"][str(i)])
         db["Initials"][str(i)] = db["Initials"][str(i-1)]
         db["Time"][str(i)] = db["Time"][str(i-1)]
     db["Initials"][str(rank)] = initials
