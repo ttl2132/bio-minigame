@@ -2,6 +2,7 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.image import Image
 from kivy.app import App
 from loguru import logger
+from minigame.lb import Leaderboard
 
 
 class ImageButton(ButtonBehavior, Image):
@@ -43,6 +44,11 @@ class ImageButton(ButtonBehavior, Image):
                 self.parent.time.stop_time()
                 time = self.parent.time.timeText
                 logger.debug(f"Done time: {time}")
+                lb = Leaderboard(
+                    size_hint=(0.3, 0.3), pos_hint=(1.0/3, 1.0/3))
+                self.parent.add_widget(lb)
+                lb.add_popup_bg()
+                self.parent.widget_refs.append(lb)
             else:
                 self.parent.cur_img += 1
         else:

@@ -13,6 +13,7 @@ def generate_picture_layout(imgs, load_order, bounds):
         information for all images with the image label as the key
     load_order (list[str]):
         list of the labels for images that are loaded as part of the canvas
+    bounds (b)
     """
     invalid_layout = True
     while invalid_layout:

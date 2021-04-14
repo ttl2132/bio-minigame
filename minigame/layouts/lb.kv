@@ -1,13 +1,14 @@
 <LeaderboardScreen>:
-    Label:
-        text: root.lb_info
     BoxLayout:
-        text: 'Leaderboard'
-        Button:
-            text: 'Menu'
-            on_press: root.manager.current = 'menu'
-            size_hint: .3, .3
-        Button:
-            text: 'Test Update'
-            on_release: root.update()
-            size_hint: .3, .3
+        orientation: 'vertical'
+        Label:
+            text: 'Leaderboard'
+        Leaderboard:
+            size_hint: 1, 2.5
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+            Button:
+                text: 'Menu'
+                on_press: root.manager.current = 'menu'
+                size_hint: 1, .75

@@ -24,7 +24,7 @@ class ScreenFactory(Screen):
         super(ScreenFactory, self).__init__(**kwargs)
         self.GAME_PREFIX = game_name
         self.imgs = {}
-        self.button_refs = []
+        self.widget_refs = []
         self.orders = ['']
         self.bounds = {}
 
@@ -43,7 +43,7 @@ class ScreenFactory(Screen):
                 count, img_info["label"], img_info["source"], img_info["loc"],
                 img_info["size"]
                 )
-            self.button_refs.append(image_button)
+            self.widget_refs.append(image_button)
             self.add_widget(image_button)
             label_order[order[i]] = img_info["label"]
         logger.debug(label_order)
@@ -68,7 +68,7 @@ class ScreenFactory(Screen):
     def reset(self):
         """Resets the timer and game with the same layout."""
         self.time.reset_time()
-        for button in self.button_refs:
+        for button in self.widget_refs:
             self.remove_widget(button)
-        self.button_refs.clear()
+        self.widget_refs.clear()
         self.generate_cell()
