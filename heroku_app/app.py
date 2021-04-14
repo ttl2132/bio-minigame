@@ -21,10 +21,9 @@ def update_scores(initials: str, score: str, rank: int):
     num_ranks = len(db["Time"].keys())
     for i in range(num_ranks-1, num_ranks-rank, -1):
         logger.debug(db["Initials"][str(i)])
-        db["Initials"][str(i)] = db["Initials"][str(i-1)]
-        db["Time"][str(i)] = db["Time"][str(i-1)]
-    db["Initials"][str(rank)] = initials
-    db["Time"][str(rank)] = score
+        db.iloc[i] = db.iloc[i-1]
+    db.iloc[rank][0] = initials
+    db.iloc[rank][1] = score
     with open(f"{LB_URL}/leaderboard.csv", 'w') as f:
         f.write(db.to_csv())
     return "posted"
