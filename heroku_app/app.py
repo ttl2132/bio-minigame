@@ -33,6 +33,7 @@ def update_scores(initials: str, score: str, rank: int):
 @app.get("/scores")
 def get_scores():
     token = os.getenv('TOKEN')
+    logger.debug('TOKEN')
     g = Github(token)
     repo = g.get_repo("ttl2132/bio-minigame")
     issues = repo.get_issues(state="closed")
