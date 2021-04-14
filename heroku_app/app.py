@@ -53,8 +53,6 @@ def push(content, update=True):
         "ttl2132",
         "ttl2132@columbia.edu"
     )
-    source = repo.get_branch("master")
-    repo.create_git_ref(ref=f"refs/heads/{branch}", sha=source.commit.sha)  # Create new branch from master
     if update:  # If file already exists, update it
         contents = repo.get_contents(path, ref=branch)  # Retrieve old file to get its SHA and path
         repo.update_file(contents.path, message, content, contents.sha, branch=branch, author=author)  # Add, commit and push branch
