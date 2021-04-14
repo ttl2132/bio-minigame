@@ -19,11 +19,11 @@ def update_scores(initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
     db = get_scores()
     num_ranks = len(db["Time"].keys())
-    for i in range(num_ranks-1, num_ranks-rank-1, -1):
+    for i in range(num_ranks-1, num_ranks-rank, -1):
         db["Initials"][str(i)] = db["Initials"][str(i-1)]
         db["Time"][str(i)] = db["Time"][str(i-1)]
-    db["Initials"][str(i)] = initials
-    db["Time"][str(i)] = score
+    db["Initials"][str(rank)] = initials
+    db["Time"][str(rank)] = score
     return "posted"
 
 @app.get("/scores")
