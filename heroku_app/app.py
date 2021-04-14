@@ -1,6 +1,8 @@
 import requests
 import pandas as pd
 import uvicorn
+import os
+from github import Github
 from fastapi import FastAPI
 from loguru import logger
 
@@ -30,6 +32,11 @@ def update_scores(initials: str, score: str, rank: int):
 
 @app.get("/scores")
 def get_scores():
+    token = os.getenv('TOKEN')
+    g = Github(token)
+    repo = g.get_repo("ttl2132/bio-minigame")
+    issues = repo.get_issues(state="closed")
+    logger.debug(issues.get_page(0))
     "Gets the data from the URL and returns the information as a JSON."
     data = pd.read_csv(f"{LB_URL}/leaderboard.csv")
     data = data.fillna("N/A")
