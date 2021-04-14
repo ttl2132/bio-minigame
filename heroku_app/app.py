@@ -14,12 +14,12 @@ def landing_page():
     "Landing page for bio-minigame."
     return "Hi! You can find the leaderboard at this URL/scores"
 
-@app.post("/scores/{initials}/{score}")
+@app.post("/scores/{initials}/{score}/{rank}")
 def update_scores(initials: str, score: str):
     "Checks and updates the leaderboard if a new score is a high score."
     db = get_scores()
     num_ranks = len(db["Time"].keys())
-    for i in range(num_ranks-1, num_ranks-i-1, -1):
+    for i in range(num_ranks-1, num_ranks-rank-1, -1):
         db["Initials"][str(i)] = db["Initials"][str(i-1)]
         db["Time"][str(i)] = db["Time"][str(i-1)]
     db["Initials"][str(i)] = initials
