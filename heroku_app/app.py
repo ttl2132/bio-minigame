@@ -27,6 +27,7 @@ def update_scores(initials: str, score: str, rank: int):
     db.iloc[rank][0] = initials
     db.iloc[rank][1] = score
     push(db.to_csv())
+    logger.debug(db.to_csv())
     return "posted"
 
 @app.get("/scores")
@@ -46,9 +47,6 @@ def push(content, update=True):
     branch = "master"
 
     message = "Updating github data"
-    file = repo.get_contents(path, ref="master")  # Get file from branch
-    data = file.decoded_content.decode("utf-8")  # Get raw string data
-    data += "\npytest==5.3.2"  # Modify/Create file
     author = InputGitAuthor(
         "ttl2132",
         "ttl2132@columbia.edu"
