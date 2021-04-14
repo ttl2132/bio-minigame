@@ -20,6 +20,7 @@ class Timer(Widget):
 
     def reset_time(self):
         """Resets the time elapsed."""
+        self.stop_time()
         self.timeText = 0
         self.start_time()
 

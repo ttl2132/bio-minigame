@@ -24,7 +24,8 @@ class ScreenFactory(Screen):
         super(ScreenFactory, self).__init__(**kwargs)
         self.GAME_PREFIX = game_name
         self.imgs = {}
-        self.widget_refs = []
+        self.button_refs = []
+        self.lb_ref = None
         self.orders = ['']
         self.bounds = {}
 
@@ -43,7 +44,7 @@ class ScreenFactory(Screen):
                 count, img_info["label"], img_info["source"], img_info["loc"],
                 img_info["size"]
                 )
-            self.widget_refs.append(image_button)
+            self.button_refs.append(image_button)
             self.add_widget(image_button)
             label_order[order[i]] = img_info["label"]
         logger.debug(label_order)
@@ -62,13 +63,16 @@ class ScreenFactory(Screen):
 
     def on_enter(self):
         """Starts the timer when moved to the game screen."""
+        if self.lb_ref:
+            logger.debug("Removing leaderboard widget")
+            self.remove_widget(self.lb_ref)
+            self.lb_ref = None
         self.time.reset_time()
-        self.time.start_time()
 
     def reset(self):
         """Resets the timer and game with the same layout."""
         self.time.reset_time()
-        for button in self.widget_refs:
+        for button in self.button_refs:
             self.remove_widget(button)
-        self.widget_refs.clear()
+        self.button_refs.clear()
         self.generate_cell()

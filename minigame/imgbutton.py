@@ -48,7 +48,8 @@ class ImageButton(ButtonBehavior, Image):
                     size_hint=(0.3, 0.3), pos_hint=(1.0/3, 1.0/3))
                 self.parent.add_widget(lb)
                 lb.add_popup_bg()
-                self.parent.widget_refs.append(lb)
+                lb.update(time)
+                self.parent.lb_ref = lb
             else:
                 self.parent.cur_img += 1
         else:

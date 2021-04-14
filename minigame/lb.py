@@ -72,10 +72,11 @@ class Leaderboard(GridLayout):
         num_ranks = len(db_lb["Initials"].keys())
         if finish_time:
             for i in range(num_ranks):
-                if finish_time < int(db_lb["Time"][i]):
+                if (db_lb["Initials"][str(i)] == "N/A"
+                    or finish_time < int(db_lb["Time"][str(i)])):
                     initials = self.enter_initials()
                     requests.post(
-                        f"{HEROKU_URL}/scores/{initials}/{finish_time}"
+                        f"{HEROKU_URL}/scores/{initials}/{finish_time}/{i}"
                         )
         self.generate_leaderboard()
 
@@ -85,7 +86,7 @@ class Leaderboard(GridLayout):
         if db_info.status_code == 200:
             return db_info.json()
         else:
-            logger.error("Error returned.")
+            logger.error(f"{db_info.status_code}: Error returned.")
 
     def enter_initials(self):
         return "ABC"
