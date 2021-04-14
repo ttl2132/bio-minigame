@@ -19,8 +19,8 @@ def landing_page():
 @app.post("/scores/{initials}/{score}/{rank}")
 def update_scores(initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
-    db = get_scores()
-    num_ranks = db.shape[0]
+    db = pd.read_json(get_scores())
+    num_ranks = db.shape(0)
     for i in range(num_ranks-1, num_ranks-rank, -1):
         logger.debug(db.iloc[i])
         db.iloc[i] = db.iloc[i-1]
