@@ -20,18 +20,21 @@ def update_scores(initials: str, score: str, rank: int):
     db = get_scores()
     num_ranks = len(db["Time"].keys())
     for i in range(num_ranks-1, num_ranks-rank, -1):
+        logging.debug(f"orig:{db["Initials"][str(i)]}")
         db["Initials"][str(i)] = db["Initials"][str(i-1)]
         db["Time"][str(i)] = db["Time"][str(i-1)]
     db["Initials"][str(rank)] = initials
     db["Time"][str(rank)] = score
+    with open(f"{LB_URL}/leaderboard.csv", 'w') as f:
+        f.write(db.to_csv())
     return "posted"
 
 @app.get("/scores")
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
     data = pd.read_csv(f"{LB_URL}/leaderboard.csv")
-    logger.debug(data)
     data = data.fillna("N/A")
+    logger.debug(data)
     return data
 
 if __name__ == "__main__":
