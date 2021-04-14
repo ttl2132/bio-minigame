@@ -31,6 +31,7 @@ def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
     data = pd.read_csv(f"{LB_URL}/leaderboard.csv")
     logger.debug(data)
+    data = data.fillna('')
     return data
 
 if __name__ == "__main__":
