@@ -26,7 +26,7 @@ class MenuLayout(GridLayout):
 
 
 class MyApp(App):
-    """Deploys the app and game information required for tracking the order."""
+    """Deploys the app and adds the required game screens."""
     logger.remove()
     logger.add(
         sys.stderr,

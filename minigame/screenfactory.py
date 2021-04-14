@@ -9,12 +9,18 @@ import minigame.locgenerator as locgenerator
 
 
 class ScreenFactory(Screen):
+    """Parses the image files to generate the game screen."""
     orders = props.ListProperty([''])
     cur_img = props.NumericProperty()
     last_img = props.NumericProperty()
-    """Parses the image files to generate the game screen."""
 
     def __init__(self, game_name, **kwargs):
+        """
+        Parameters
+        ----------
+        game_name (str):
+            the name of the game used for file locating
+        """
         super(ScreenFactory, self).__init__(**kwargs)
         self.GAME_PREFIX = game_name
         self.imgs = {}

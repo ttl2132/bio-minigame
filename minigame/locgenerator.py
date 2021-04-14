@@ -4,7 +4,16 @@ from loguru import logger
 
 
 def generate_picture_layout(imgs, load_order, bounds):
-    """Randomizes the locations of each image."""
+    """
+    Randomizes the locations of each image.
+
+    Parameters
+    ----------
+    imgs (dict[str]):
+        information for all images with the image label as the key
+    load_order (list[str]):
+        list of the labels for images that are loaded as part of the canvas
+    """
     invalid_layout = True
     while invalid_layout:
         invalid_layout = False

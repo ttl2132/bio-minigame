@@ -7,6 +7,20 @@ from loguru import logger
 class ImageButton(ButtonBehavior, Image):
     """A button image for a cell part."""
     def __init__(self, order, label, source_path, loc, size, **kwargs):
+        """
+        Parameters
+        ----------
+        order (int):
+            the number that the button is assigned in the question order
+        label (str):
+            the name of what the image represents
+        source_path (str):
+            the source path for the image from the images folder
+        loc (float, float):
+            the location of the image based on image:screen ratio
+        size (float, float):
+            the size of the image based on image:screen ratio
+        """
         super(ImageButton, self).__init__(**kwargs)
         self.source = source_path
         self.pos_hint = loc
