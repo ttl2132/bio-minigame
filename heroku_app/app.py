@@ -26,14 +26,14 @@ def update_scores(initials: str, score: str, rank: int):
         db.iloc[i] = db.iloc[i-1]
     db.iloc[rank, 0] = initials
     db.iloc[rank, 1] = score
-    push(db.to_csv())
-    logger.debug(db.to_csv())
+    push(db.to_csv(index=False))
+    logger.debug(f"\n{db.to_csv(index=False)}")
     return "posted"
 
 @app.get("/scores")
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
-    data = pd.read_csv(f"{LB_URL}/leaderboard.csv")
+    data = pd.read_csv(f"{LB_URL}/leaderboard.csv", index_col=0)
     data = data.fillna("N/A")
     logger.debug(data)
     return data
