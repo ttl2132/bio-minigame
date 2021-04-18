@@ -42,7 +42,7 @@ def get_scores():
     cur = con.cursor()
     cur.execute('''CREATE TABLE LEADERBOARD
         (INITIALS   CHAR(3)  PRIMARY KEY NOT NULL,
-        TIME        INT      PRIMARY KEY NOT NULL;)''')
+        TIME        INT      PRIMARY KEY NOT NULL);''')
     logger.debug("Table created successfully")
 
     con.commit()
