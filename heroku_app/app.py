@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import uvicorn
+import psycopg2
 import os
 from github import Github, InputGitAuthor
 from fastapi import FastAPI
@@ -35,6 +36,17 @@ def update_scores(initials: str, score: str, rank: int):
 @app.get("/scores")
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
+    db_url = os.getenv('DATABASE_URL')
+    psycopg2.connect(db_url)
+    logger.debug("DB opened")
+    cur = con.cursor()
+    cur.execute('''CREATE TABLE LEADERBOARD
+        (INITIALS           CHAR(3)  PRIMARY KEY    NOT NULL,
+        TIME            INT      PRIMARY KEY NOT NULL;''')
+    logger.debug("Table created successfully")
+
+    con.commit()
+    con.close()
     data = pd.read_csv(f"{LB_URL}/leaderboard.csv?flush_cache=True")
     data = data.fillna("N/A")
     logger.debug(data)
