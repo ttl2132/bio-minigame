@@ -40,17 +40,20 @@ def get_scores():
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
     cur = con.cursor()
-    cur.execute('''CREATE TABLE LEADERBOARD (
+    cur.execute('''CREATE TABLE GAMELEADERBOARD (
+        GAME       CHAR(50) NOT NULL,
         INITIALS   CHAR(3)  NOT NULL,
         TIME       INT      NOT NULL,
-        PRIMARY KEY (INITIALS, TIME)
+        PRIMARY KEY (GAME, INITIALS, TIME)
         );''')
     logger.debug("Table created successfully")
 
     con.commit()
     con.close()
-    data = pd.read_csv(f"{LB_URL}/leaderboard.csv?flush_cache=True")
-    data = data.fillna("N/A")
+    data = pd.read_sql(
+        sql="SELECT INITIALS, TIME FROM GAMELEADERBOARD",
+        con=con
+    )
     logger.debug(data)
     return data
 
