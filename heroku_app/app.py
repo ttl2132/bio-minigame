@@ -37,7 +37,7 @@ def update_scores(initials: str, score: str, rank: int):
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
     db_url = os.getenv('DATABASE_URL')
-    psycopg2.connect(db_url)
+    con = psycopg2.connect(db_url)
     logger.debug("DB opened")
     cur = con.cursor()
     cur.execute('''CREATE TABLE LEADERBOARD
