@@ -21,10 +21,11 @@ def update_scores(initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
     db = get_scores()
     num_ranks = db.shape[0]
-    for i in range(num_ranks-1, rank, -1):
+    changed_ranks = range(num_ranks-1, rank, -1)
+    logger.debug(changed_ranks)
+    for i in changed_ranks:
         logger.debug(db.iloc[i])
         db.iloc[i] = db.iloc[i-1]
-        logger.debug(db.iloc[i])
     db.iloc[rank, 0] = initials
     db.iloc[rank, 1] = score
     push(db.to_csv(index=False))
@@ -34,10 +35,19 @@ def update_scores(initials: str, score: str, rank: int):
 @app.get("/scores")
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
-    data = pd.read_csv(f"{LB_URL}/leaderboard.csv")
+    token = os.getenv('TOKEN')
+    path = "/data/leaderboard.csv"
+    g = Github(token)
+    repo = g.get_repo("ttl2132/ttl2132.github.io")
+    branch = "master"
+
+    contents = repo.get_contents(path, ref=branch)
+    logger.debug(f"\n{contents}\n")
+    data = pd.read_csv(contents)
     data = data.fillna("N/A")
     logger.debug(data)
     return data
+
 
 def push(content, update=True):
     """From https://towardsdatascience.com/all-the-things-you-can-do-with-github-api-and-python-f01790fca131"""
