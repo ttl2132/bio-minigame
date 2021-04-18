@@ -39,17 +39,6 @@ def get_scores():
     db_url = os.getenv('DATABASE_URL')
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
-    cur = con.cursor()
-    cur.execute('''CREATE TABLE GAMELEADERBOARD (
-        GAME       CHAR(50) NOT NULL,
-        INITIALS   CHAR(3)  NOT NULL,
-        TIME       INT      NOT NULL,
-        PRIMARY KEY (GAME, INITIALS, TIME)
-        );''')
-    logger.debug("Table created successfully")
-
-    con.commit()
-    con.close()
     data = pd.read_sql(
         sql="SELECT INITIALS, TIME FROM GAMELEADERBOARD",
         con=con
