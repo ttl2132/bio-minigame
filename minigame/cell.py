@@ -15,4 +15,4 @@ class CellScreen(ScreenFactory):
     def __init__(self, **kwargs):
         super(CellScreen, self).__init__(GAME_PREFIX, **kwargs)
         self.parse()
-        self.generate_cell()
+        self.generate_game()

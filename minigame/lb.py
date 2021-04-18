@@ -20,7 +20,8 @@ class LeaderboardScreen(Screen):
 
     def on_enter(self):
         """Determines the action"""
-        self.lb_widget.update()
+        self.remove_widget(self.lb_widget)
+        self.lb_widget = Leaderboard()
 
 class Leaderboard(GridLayout):
     """A widget that contains the initials and times for the leaderboard."""
@@ -30,6 +31,8 @@ class Leaderboard(GridLayout):
         self.label_refs = []
         if size_hint:
             self.size_hint = size_hint
+        if popup:
+            self.add_popup_bg()
         self.pos_hint={'center_x':.5, 'center_y': .5}
         self.add_widget(Label(text='Initials'))
         self.add_widget(Label(text='Time'))
@@ -53,13 +56,10 @@ class Leaderboard(GridLayout):
 
     def generate_leaderboard(self, lb=None):
         """Used for created the widgets to display in the grid layout"""
-        for old_label in self.label_refs:
-            self.remove_widget(old_label)
+        self.clear_widgets()
         updated_lb = lb
         if lb == None:
-            logger.debug(self.get_lb())
             updated_lb=self.get_lb()
-            logger.debug(updated_lb)
         updated_lb=pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
         for i in range(num_ranks):
@@ -75,6 +75,7 @@ class Leaderboard(GridLayout):
         """Will update leaderboard based on new time"""
         db_lb = self.get_lb()
         num_ranks = db_lb.shape[0]
+        updated = False
         if finish_time:
             for i in range(num_ranks):
                 if (db_lb["Initials"][str(i)] == "N/A"
@@ -85,7 +86,8 @@ class Leaderboard(GridLayout):
                         )
                     logger.debug(lb.json())
                     self.generate_leaderboard(lb.json())
-        self.generate_leaderboard()
+        if not updated:
+            self.generate_leaderboard()
 
     def get_lb(self):
         """Will make get REST call to heroku app."""
@@ -97,4 +99,3 @@ class Leaderboard(GridLayout):
 
     def enter_initials(self):
         return "ABC"
-        

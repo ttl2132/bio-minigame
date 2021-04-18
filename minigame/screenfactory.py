@@ -29,8 +29,8 @@ class ScreenFactory(Screen):
         self.orders = ['']
         self.bounds = {}
 
-    def generate_cell(self):
-        """Adds the cell parts to the screen."""
+    def generate_game(self):
+        """Adds the image buttons to the screen."""
         img_locs = locgenerator.generate_picture_layout(
             self.imgs, self.load_order, self.bounds
         )
@@ -75,4 +75,4 @@ class ScreenFactory(Screen):
         for button in self.button_refs:
             self.remove_widget(button)
         self.button_refs.clear()
-        self.generate_cell()
+        self.generate_game()
