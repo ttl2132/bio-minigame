@@ -40,9 +40,11 @@ def get_scores():
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
     cur = con.cursor()
-    cur.execute('''CREATE TABLE LEADERBOARD
-        (INITIALS   CHAR(3)  PRIMARY KEY NOT NULL,
-        TIME        INT      PRIMARY KEY NOT NULL);''')
+    cur.execute('''CREATE TABLE LEADERBOARD (
+        INITIALS   CHAR(3)  NOT NULL,
+        TIME       INT      NOT NULL,
+        PRIMARY KEY (INITIALS, TIME)
+        );''')
     logger.debug("Table created successfully")
 
     con.commit()
