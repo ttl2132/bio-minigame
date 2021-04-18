@@ -35,19 +35,11 @@ def update_scores(initials: str, score: str, rank: int):
 @app.get("/scores")
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
-    token = os.getenv('TOKEN')
-    path = "/data/leaderboard.csv"
-    g = Github(token)
-    repo = g.get_repo("ttl2132/ttl2132.github.io")
-    branch = "master"
-
-    contents = repo.get_contents(path, ref=branch)
-    logger.debug(f"\n{contents}\n")
-    data = pd.read_csv(contents)
+    requests.get(f"{LB_URL}/leaderboard.csv?flush_cache=True")
+    data = pd.read_csv()
     data = data.fillna("N/A")
     logger.debug(data)
     return data
-
 
 def push(content, update=True):
     """From https://towardsdatascience.com/all-the-things-you-can-do-with-github-api-and-python-f01790fca131"""
