@@ -35,8 +35,7 @@ def update_scores(initials: str, score: str, rank: int):
 @app.get("/scores")
 def get_scores():
     "Gets the data from the URL and returns the information as a JSON."
-    db = requests.get(f"{LB_URL}/leaderboard.csv?flush_cache=True")
-    data = pd.read_csv(db)
+    data = pd.read_csv(f"{LB_URL}/leaderboard.csv?flush_cache=True")
     data = data.fillna("N/A")
     logger.debug(data)
     return data
