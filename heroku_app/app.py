@@ -48,6 +48,7 @@ def get_scores(game: str):
     empty_rows = pd.concat(
         [empty_row for i in range(len(db),5)]
         )
+    logger.debug(f"Empty Rows: \n{empty_rows}")
     db = pd.concat([db, empty_rows], columns=db.columns).reset_index()
     logger.debug(db)
     return db
