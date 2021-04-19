@@ -87,8 +87,8 @@ class Leaderboard(GridLayout):
                     lb = requests.post(
                         f"{HEROKU_URL}/scores/{self.game}/{initials}/{finish_time}/{i}"
                         )
-                    logger.debug(lb.json())
-                    self.generate_leaderboard(lb.json())
+                    logger.debug(lb)
+                    self.generate_leaderboard(lb)
         if not updated:
             self.generate_leaderboard(self.game)
 
