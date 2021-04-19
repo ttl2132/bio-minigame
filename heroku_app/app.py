@@ -40,7 +40,7 @@ def get_scores(game: str):
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
     db = pd.read_sql(
-        "GAMELEADERBOARD",
+        f"SELECT * FROM GAMELEADERBOARD WHERE GAME='{game}'",
         con=con
     )
     db = db[db.game==game]
