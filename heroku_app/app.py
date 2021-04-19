@@ -19,15 +19,7 @@ def landing_page():
 @app.post("/scores/{game}/{initials}/{score}/{rank}")
 def update_scores(game: str, initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
-    db = get_scores(game)
-    num_ranks = db.shape[0]
-    changed_ranks = range(num_ranks-1, rank, -1)
-    logger.debug(changed_ranks)
-    for i in changed_ranks:
-        logger.debug(db.iloc[i])
-        db.iloc[i] = db.iloc[i-1]
-    db.iloc[rank, 0] = initials
-    db.iloc[rank, 1] = score
+    logger.debug(f"Rank: {rank}")
     db_url = os.getenv('DATABASE_URL')
     con = psycopg2.connect(db_url)
     cur = con.cursor()
@@ -36,7 +28,7 @@ def update_scores(game: str, initials: str, score: str, rank: int):
         f"INSERT INTO GAMELEADERBOARD VALUES ({game},{initials},{score})"
     )
     logger.debug(get_scores(game))
-    return db
+    return get_scores(game)
 
 @app.get("/scores/{game}")
 def get_scores(game: str):
