@@ -22,8 +22,7 @@ class LeaderboardScreen(Screen):
 
     def on_enter(self):
         """Determines the action"""
-        self.remove_widget(self.lb_widget)
-        self.lb_widget = Leaderboard()
+        self.lb_widget.generate_leaderboard()
 
 class Leaderboard(GridLayout):
     """A widget that contains the initials and times for the leaderboard."""
@@ -39,7 +38,7 @@ class Leaderboard(GridLayout):
         self.add_widget(Label(text='Initials'))
         self.add_widget(Label(text='Time'))
         self.game = App.get_running_app().GAMEID
-        self.generate_leaderboard()
+        self.update()
         self.bg = None
         self.cols = 2
 
@@ -57,10 +56,12 @@ class Leaderboard(GridLayout):
         self.bg.pos = self.pos
         self.bg.size = self.size
 
-    def generate_leaderboard(self):
+    def generate_leaderboard(self, lb=None):
         """Used for created the widgets to display in the grid layout"""
         self.clear_widgets()
-        updated_lb = self.get_lb()
+        updated_lb = lb
+        if not lb:
+            updated_lb = self.get_lb()
         logger.debug(updated_lb)
         updated_lb = pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
