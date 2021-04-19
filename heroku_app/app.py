@@ -40,9 +40,8 @@ def get_scores(game: str):
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
     q = f"SELECT * FROM GAMELEADERBOARD WHERE GAME=(%s) ORDER BY TIME LIMIT 5"
-    
     db = pd.read_sql(q, con, params=[(game,)])
-    db = db[db.game==game]
+
     empty_row = pd.DataFrame([[game, "N/A", 0]], columns=db.columns)
     logger.debug(f"Num rows: {len(db)}")
     logger.debug(f"Empty row: {empty_row}")
@@ -50,6 +49,7 @@ def get_scores(game: str):
         [empty_row for i in range(len(db),5)]
         )
     logger.debug(f"Empty Rows: \n{empty_rows}")
+
     db = pd.concat([db, empty_rows], ignore_index=True).reset_index(drop=True)
     logger.debug(f"Leaderboard DB: \n{db.to_dict()}")
     logger.debug("DB retrieved")
