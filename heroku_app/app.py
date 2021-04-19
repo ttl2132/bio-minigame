@@ -27,6 +27,8 @@ def update_scores(game: str, initials: str, score: str, rank: int):
     cur.execute(
         f"INSERT INTO GAMELEADERBOARD VALUES ('{game}','{initials}',{score})"
     )
+    con.commit()
+    con.close()
     logger.debug(get_scores(game))
     return get_scores(game)
 

@@ -56,12 +56,10 @@ class Leaderboard(GridLayout):
         self.bg.pos = self.pos
         self.bg.size = self.size
 
-    def generate_leaderboard(self, lb=None):
+    def generate_leaderboard(self):
         """Used for created the widgets to display in the grid layout"""
         self.clear_widgets()
-        updated_lb = lb
-        if lb == None:
-            updated_lb=self.get_lb()
+        updated_lb=self.get_lb()
         logger.debug(updated_lb)
         updated_lb=pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
@@ -88,9 +86,9 @@ class Leaderboard(GridLayout):
                         f"{HEROKU_URL}/scores/{self.game}/{initials}/{finish_time}/{i}"
                         )
                     logger.debug(lb)
-                    self.generate_leaderboard(lb)
+                    self.generate_leaderboard()
         if not updated:
-            self.generate_leaderboard(self.game)
+            self.generate_leaderboard()
 
     def get_lb(self):
         """Will make get REST call to heroku app."""
