@@ -51,10 +51,10 @@ def get_scores(game: str):
         [empty_row for i in range(len(db),5)]
         )
     logger.debug(f"Empty Rows: \n{empty_rows}")
-    db = pd.concat([db, empty_rows], ignore_index=True).reset_index()
-    logger.debug(db)
+    db = pd.concat([db, empty_rows], ignore_index=True).reset_index(drop=True)
+    logger.debug(db.to_dict())
     logger.debug("DB retrieved")
-    return db
+    return db.to_dict()
 
 def push(content, update=True):
     """From https://towardsdatascience.com/all-the-things-you-can-do-with-github-api-and-python-f01790fca131"""
