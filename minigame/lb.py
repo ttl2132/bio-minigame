@@ -38,7 +38,7 @@ class Leaderboard(GridLayout):
         self.add_widget(Label(text='Initials'))
         self.add_widget(Label(text='Time'))
         self.game = App.get_running_app().GAMEID
-        self.generate_leaderboard(self.game)
+        self.generate_leaderboard()
         self.bg = None
         self.cols = 2
 
@@ -62,6 +62,7 @@ class Leaderboard(GridLayout):
         updated_lb = lb
         if lb == None:
             updated_lb=self.get_lb()
+        logger.debug(updated_lb)
         updated_lb=pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
         for i in range(num_ranks):
