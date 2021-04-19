@@ -17,10 +17,10 @@ def landing_page():
     "Landing page for bio-minigame."
     return "Hi! You can find the leaderboard at this URL/scores"
 
-@app.post("/scores/{initials}/{score}/{rank}")
-def update_scores(initials: str, score: str, rank: int):
+@app.post("/scores/{game}/{initials}/{score}/{rank}")
+def update_scores(game: str, initials: str, score: str, rank: int):
     "Checks and updates the leaderboard if a new score is a high score."
-    db = get_scores()
+    db = get_scores(game)
     num_ranks = db.shape[0]
     changed_ranks = range(num_ranks-1, rank, -1)
     logger.debug(changed_ranks)
@@ -33,17 +33,21 @@ def update_scores(initials: str, score: str, rank: int):
     logger.debug(f"\n{db.to_csv(index=False)}")
     return db
 
-@app.get("/scores")
-def get_scores():
+@app.get("/scores/{game}")
+def get_scores(game: str):
     "Gets the data from the URL and returns the information as a JSON."
     db_url = os.getenv('DATABASE_URL')
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
-    data = pd.read_sql(
-        sql="SELECT INITIALS, TIME FROM GAMELEADERBOARD",
+    db = pd.read_sql(
+        "GAMELEADERBOARD",
         con=con
     )
-    logger.debug(data)
+    for i in range(len(db),5):
+        db.iloc[i, 0] = game
+        db.iloc[i, 1] = "N/A"
+        db.iloc[i, 2] = 0
+    logger.debug(db)
     return data
 
 def push(content, update=True):

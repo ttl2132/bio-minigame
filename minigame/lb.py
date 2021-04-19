@@ -8,6 +8,7 @@ from loguru import logger
 import random
 import requests
 import pandas as pd
+from kivy.app import App
 
 
 class LeaderboardScreen(Screen):
@@ -36,7 +37,8 @@ class Leaderboard(GridLayout):
         self.pos_hint={'center_x':.5, 'center_y': .5}
         self.add_widget(Label(text='Initials'))
         self.add_widget(Label(text='Time'))
-        self.generate_leaderboard()
+        self.game = App.get_running_app().GAMEID
+        self.generate_leaderboard(self.game)
         self.bg = None
         self.cols = 2
 
@@ -82,16 +84,16 @@ class Leaderboard(GridLayout):
                     or finish_time < int(db_lb["Time"][str(i)])):
                     initials = self.enter_initials()
                     lb = requests.post(
-                        f"{HEROKU_URL}/scores/{initials}/{finish_time}/{i}"
+                        f"{HEROKU_URL}/scores/{self.game}/{initials}/{finish_time}/{i}"
                         )
                     logger.debug(lb.json())
                     self.generate_leaderboard(lb.json())
         if not updated:
-            self.generate_leaderboard()
+            self.generate_leaderboard(self.game)
 
     def get_lb(self):
         """Will make get REST call to heroku app."""
-        db_info = requests.get(f"{HEROKU_URL}/scores")
+        db_info = requests.get(f"{HEROKU_URL}/scores/{self.game}")
         if db_info.status_code == 200:
             return pd.DataFrame.from_dict(db_info.json())
         else:
