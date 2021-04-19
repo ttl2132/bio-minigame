@@ -43,12 +43,13 @@ def get_scores(game: str):
         "GAMELEADERBOARD",
         con=con
     )
+    db = db[db.game==game]
     for i in range(len(db),5):
         db.iloc[i, 0] = game
         db.iloc[i, 1] = "N/A"
         db.iloc[i, 2] = 0
     logger.debug(db)
-    return data
+    return db
 
 def push(content, update=True):
     """From https://towardsdatascience.com/all-the-things-you-can-do-with-github-api-and-python-f01790fca131"""
