@@ -66,8 +66,8 @@ class Leaderboard(GridLayout):
         updated_lb=pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
         for i in range(num_ranks):
-            initials_label = Label(text=updated_lb["Initials"][str(i)])
-            score_label = Label(text=str(updated_lb["Time"][str(i)]))
+            initials_label = Label(text=updated_lb["initials"][str(i)])
+            score_label = Label(text=str(updated_lb["time"][str(i)]))
             self.label_refs.append(initials_label)
             self.label_refs.append(score_label)
             self.add_widget(initials_label)
@@ -77,12 +77,12 @@ class Leaderboard(GridLayout):
     def update(self, finish_time=None):
         """Will update leaderboard based on new time"""
         db_lb = self.get_lb()
-        num_ranks = db_lb.shape[0]
+        num_ranks = len(db_lb)
         updated = False
         if finish_time:
             for i in range(num_ranks):
-                if (db_lb["Initials"][str(i)] == "N/A"
-                    or finish_time < int(db_lb["Time"][str(i)])):
+                if (db_lb["initials"][str(i)] == "N/A"
+                    or finish_time < int(db_lb["time"][str(i)])):
                     initials = self.enter_initials()
                     lb = requests.post(
                         f"{HEROKU_URL}/scores/{self.game}/{initials}/{finish_time}/{i}"
