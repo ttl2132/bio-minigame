@@ -45,12 +45,15 @@ def get_scores(game: str):
     empty_row = pd.DataFrame([[game, "N/A", 0]], columns=db.columns)
     logger.debug(f"Num rows: {len(db)}")
     logger.debug(f"Empty row: {empty_row}")
-    empty_rows = pd.concat(
-        [empty_row for i in range(len(db),5)]
-        )
-    logger.debug(f"Empty Rows: \n{empty_rows}")
+    if len(db) <4:
+        empty_rows = pd.concat([empty_row for i in range(len(db),5)])
+        logger.debug(f"Empty Rows: \n{empty_rows}")
+        db = pd.concat([db, empty_rows], ignore_index=True) \
+               .reset_index(drop=True)
+    elif len(db) == 4:
+        db = pd.concat([db, empty_row], ignore_index=True) \
+               .reset_index(drop=True)
 
-    db = pd.concat([db, empty_rows], ignore_index=True).reset_index(drop=True)
     logger.debug(f"Leaderboard DB: \n{db.to_dict()}")
     logger.debug("DB retrieved")
     return db.to_dict()

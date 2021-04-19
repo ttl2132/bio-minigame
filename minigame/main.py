@@ -27,9 +27,10 @@ class MenuLayout(GridLayout):
 
 class MyApp(App):
     """Deploys the app and adds the required game screens."""
-    def __init__(self, gameid, **kwargs):
+    def __init__(self, gameid, initials, **kwargs):
         super(MyApp, self).__init__(**kwargs)
         self.GAMEID = gameid
+        self.INITIALS = initials
 
     logger.remove()
     logger.add(

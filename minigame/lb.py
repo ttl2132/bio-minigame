@@ -1,6 +1,7 @@
 from kivy.uix.screenmanager import Screen
 import kivy.properties as props
 from kivy.uix.gridlayout import GridLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from heroku_app.app import HEROKU_URL
 from kivy.graphics import Color, Rectangle
@@ -8,6 +9,8 @@ from loguru import logger
 import random
 import requests
 import pandas as pd
+from kivy.uix.textinput import TextInput
+from kivy.uix.popup import Popup
 from kivy.app import App
 
 
@@ -73,21 +76,24 @@ class Leaderboard(GridLayout):
             self.add_widget(score_label)
         logger.debug("Leaderboard generated")
 
-    def update(self, finish_time=None):
+    def update(self, time=None):
         """Will update leaderboard based on new time"""
         db_lb = self.get_lb()
         num_ranks = len(db_lb)
         updated = False
-        if finish_time:
+        if time:
             for i in range(num_ranks):
                 if (db_lb["initials"][str(i)] == "N/A"
-                    or finish_time < int(db_lb["time"][str(i)])):
-                    initials = self.enter_initials()
+                    or time < int(db_lb["time"][str(i)])):
+                    name = App.get_running_app().INITIALS
+                    logger.debug(f"Name: {name}")
                     lb = requests.post(
-                        f"{HEROKU_URL}/scores/{self.game}/{initials}/{finish_time}/{i}"
-                        )
+                    f"{HEROKU_URL}/scores/{self.game}/{name}/{time}/{i}"
+                    )
                     logger.debug(lb)
-                    self.generate_leaderboard()
+                    updated = True
+                    break
+            self.generate_leaderboard()
         if not updated:
             self.generate_leaderboard()
 
@@ -98,6 +104,3 @@ class Leaderboard(GridLayout):
             return pd.DataFrame.from_dict(db_info.json())
         else:
             logger.error(f"{db_info.status_code}: Error returned.")
-
-    def enter_initials(self):
-        return "ABC"

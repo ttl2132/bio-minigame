@@ -19,6 +19,12 @@ def parse_arguments():
         help="the game to play"
     )
 
+    parser.add_argument(
+        "-i",
+        "--initials",
+        help="the user's initials"
+    )
+
     # return arg dict-like object containing user arguments
     args = parser.parse_args()
     return args
@@ -26,4 +32,6 @@ def parse_arguments():
 def run_program():
     "runs the Kivy app"
     args = parse_arguments()
-    MyApp(args.gameid).run()
+    if not len(args.initials)==3:
+        raise Exception("Initials must be 3 characters long.")
+    MyApp(args.gameid, args.initials).run()
