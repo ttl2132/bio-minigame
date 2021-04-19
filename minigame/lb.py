@@ -60,9 +60,9 @@ class Leaderboard(GridLayout):
     def generate_leaderboard(self):
         """Used for created the widgets to display in the grid layout"""
         self.clear_widgets()
-        updated_lb=self.get_lb()
+        updated_lb = self.get_lb()
         logger.debug(updated_lb)
-        updated_lb=pd.DataFrame.from_dict(updated_lb)
+        updated_lb = pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
         for i in range(num_ranks):
             initials_label = Label(text=updated_lb["initials"][str(i)])
@@ -78,7 +78,6 @@ class Leaderboard(GridLayout):
         """Will update leaderboard based on new time"""
         db_lb = self.get_lb()
         num_ranks = len(db_lb)
-        updated = False
         if time:
             for i in range(num_ranks):
                 if (db_lb["initials"][str(i)] == "N/A"
@@ -89,11 +88,7 @@ class Leaderboard(GridLayout):
                     f"{HEROKU_URL}/scores/{self.game}/{name}/{time}/{i}"
                     )
                     logger.debug(lb)
-                    updated = True
-                    break
-            self.generate_leaderboard()
-        if not updated:
-            self.generate_leaderboard()
+        self.generate_leaderboard()
 
     def get_lb(self):
         """Will make get REST call to heroku app."""

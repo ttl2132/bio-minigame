@@ -67,7 +67,7 @@ class ScreenFactory(Screen):
             logger.debug("Removing leaderboard widget")
             self.remove_widget(self.lb_ref)
             self.lb_ref = None
-        self.time.reset_time()
+        self.reset()
 
     def reset(self):
         """Resets the timer and game with the same layout."""

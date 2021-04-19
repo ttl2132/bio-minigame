@@ -8,4 +8,6 @@ My program will consist of identification minigames (i.e. identifying the parts 
 ## Installation
 Run ```pip install -e .``` in the base directory.
 
+## Game Setup
 Set the environment variable ```KIVY_NO_ARGS=1```
+Run ```bio-minigame -g cellid -i [YOUR_INITIALS]"

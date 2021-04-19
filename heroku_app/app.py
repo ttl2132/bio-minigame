@@ -41,6 +41,7 @@ def get_scores(game: str):
     logger.debug("DB opened")
     q = f"SELECT * FROM GAMELEADERBOARD WHERE GAME=(%s) ORDER BY TIME LIMIT 5"
     db = pd.read_sql(q, con, params=[(game,)])
+    con.close()
 
     empty_row = pd.DataFrame([[game, "N/A", 0]], columns=db.columns)
     logger.debug(f"Num rows: {len(db)}")
