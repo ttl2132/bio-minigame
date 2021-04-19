@@ -3,7 +3,6 @@ import pandas as pd
 import uvicorn
 import psycopg2
 import os
-from github import Github, InputGitAuthor
 from fastapi import FastAPI
 from loguru import logger
 
@@ -29,8 +28,14 @@ def update_scores(game: str, initials: str, score: str, rank: int):
         db.iloc[i] = db.iloc[i-1]
     db.iloc[rank, 0] = initials
     db.iloc[rank, 1] = score
-    push(db.to_csv(index=False))
-    logger.debug(f"\n{db.to_csv(index=False)}")
+    db_url = os.getenv('DATABASE_URL')
+    con = psycopg2.connect(db_url)
+    cur = con.cursor()
+    logger.debug("DB opened")
+    cur.execute(
+        f"INSERT INTO GAMELEADERBOARD VALUES ({game},{initials},{score})"
+    )
+    logger.debug(get_scores(game))
     return db
 
 @app.get("/scores/{game}")
@@ -39,10 +44,9 @@ def get_scores(game: str):
     db_url = os.getenv('DATABASE_URL')
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
-    db = pd.read_sql(
-        f"SELECT * FROM GAMELEADERBOARD WHERE GAME='{game}'",
-        con=con
-    )
+    q = f"SELECT * FROM GAMELEADERBOARD WHERE GAME='" + game + \
+        "' ORDER BY TIME LIMIT 5"
+    db = pd.read_sql(q, con=con)
     db = db[db.game==game]
     empty_row = pd.DataFrame([[game, "N/A", 0]], columns=db.columns)
     logger.debug(f"Num rows: {len(db)}")
@@ -52,28 +56,9 @@ def get_scores(game: str):
         )
     logger.debug(f"Empty Rows: \n{empty_rows}")
     db = pd.concat([db, empty_rows], ignore_index=True).reset_index(drop=True)
-    logger.debug(db.to_dict())
+    logger.debug(f"Leaderboard DB: \n{db.to_dict()}")
     logger.debug("DB retrieved")
     return db.to_dict()
-
-def push(content, update=True):
-    """From https://towardsdatascience.com/all-the-things-you-can-do-with-github-api-and-python-f01790fca131"""
-    token = os.getenv('TOKEN')
-    path = "/data/leaderboard.csv"
-    g = Github(token)
-    repo = g.get_repo("ttl2132/ttl2132.github.io")
-    branch = "master"
-
-    message = "Updating github data"
-    author = InputGitAuthor(
-        "ttl2132",
-        "ttl2132@columbia.edu"
-    )
-    if update:  # If file already exists, update it
-        contents = repo.get_contents(path, ref=branch)  # Retrieve old file to get its SHA and path
-        repo.update_file(contents.path, message, content, contents.sha, branch=branch, author=author)  # Add, commit and push branch
-    else:  # If file doesn't exist, create it
-        repo.create_file(path, message, content, branch=branch, author=author)  # Add, commit and push branch
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
