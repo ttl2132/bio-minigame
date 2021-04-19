@@ -7,3 +7,5 @@ My program will consist of identification minigames (i.e. identifying the parts 
 ### In Development
 ## Installation
 Run ```pip install -e .``` in the base directory.
+
+Set the environment variable ```KIVY_NO_ARGS=1```
