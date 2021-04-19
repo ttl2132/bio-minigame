@@ -27,6 +27,10 @@ class MenuLayout(GridLayout):
 
 class MyApp(App):
     """Deploys the app and adds the required game screens."""
+    def __init__(self, gameid, **kwargs):
+        super(MyApp, self).__init__(**kwargs)
+        self.GAMEID = gameid
+
     logger.remove()
     logger.add(
         sys.stderr,
@@ -35,13 +39,10 @@ class MyApp(App):
     )
 
     def build(self):
+        logger.info(f"{self.GAMEID} game chosen")
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
         sm.add_widget(LeaderboardScreen(name='lb'))
         sm.add_widget(CellScreen(name='cellid'))
         logger.info("Screen manager started")
         return sm
-
-
-if __name__ == '__main__':
-    MyApp().run()
