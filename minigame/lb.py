@@ -9,8 +9,6 @@ from loguru import logger
 import random
 import requests
 import pandas as pd
-from kivy.uix.textinput import TextInput
-from kivy.uix.popup import Popup
 from kivy.app import App
 
 
