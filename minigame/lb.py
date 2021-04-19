@@ -65,7 +65,8 @@ class Leaderboard(GridLayout):
         num_ranks = updated_lb.shape[0]
         for i in range(num_ranks):
             initials_label = Label(text=updated_lb["initials"][str(i)])
-            score_label = Label(text=str(updated_lb["time"][str(i)]))
+            rounded_time = "{:.2f}".format(updated_lb["time"][str(i)])
+            score_label = Label(text=rounded_time)
             self.label_refs.append(initials_label)
             self.label_refs.append(score_label)
             self.add_widget(initials_label)
