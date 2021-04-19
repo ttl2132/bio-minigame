@@ -25,7 +25,8 @@ def update_scores(game: str, initials: str, score: str, rank: int):
     cur = con.cursor()
     logger.debug("DB opened")
     cur.execute(
-        f"INSERT INTO GAMELEADERBOARD VALUES ('{game}','{initials}',{score})"
+        f"INSERT INTO GAMELEADERBOARD VALUES (%s, %s, %s)",
+        (game, initials, score)
     )
     con.commit()
     con.close()
@@ -38,9 +39,9 @@ def get_scores(game: str):
     db_url = os.getenv('DATABASE_URL')
     con = psycopg2.connect(db_url)
     logger.debug("DB opened")
-    q = f"SELECT * FROM GAMELEADERBOARD" #WHERE GAME='" + game + \
-        #"' ORDER BY TIME LIMIT 5"
-    db = pd.read_sql(q, con=con)
+    q = f"SELECT * FROM GAMELEADERBOARD WHERE GAME=(%s) ORDER BY TIME LIMIT 5"
+    
+    db = pd.read_sql(q, con, params=[(game,)])
     db = db[db.game==game]
     empty_row = pd.DataFrame([[game, "N/A", 0]], columns=db.columns)
     logger.debug(f"Num rows: {len(db)}")
