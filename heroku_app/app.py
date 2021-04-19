@@ -45,9 +45,7 @@ def get_scores(game: str):
     )
     db = db[db.game==game]
     for i in range(len(db),5):
-        db.iloc[i, 0] = game
-        db.iloc[i, 1] = "N/A"
-        db.iloc[i, 2] = 0
+        db.concat(pd.DataFrame([game, "N/A", 0], columns=db.columns))
     logger.debug(db)
     return db
 
