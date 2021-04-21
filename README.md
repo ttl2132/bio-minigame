@@ -10,6 +10,7 @@ For more information on how this project is structured, how to set up the JSON, 
 
 ## Installation
 Run ```pip install -e .``` ***in the base directory***.
+Note: Kivy does not run easily on WSL2. If you would like to play on a Windows machine, I highly suggest you download this repo directly onto Windows and set up a conda environment there instead.
 
 ## Game Setup in Terminal
 1. Set the variable ```KIVY_NO_ARGS=1``` in your terminal. Note that this may be different based on what OS you are using. On Windows, it is ```set KIVY_NO_ARGS=1```.
