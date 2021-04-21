@@ -27,6 +27,7 @@ class Leaderboard(GridLayout):
         self.cols = 2
 
     def add_popup_bg(self):
+        """Used to add a background rectangle for the leaderboard popup."""
         with self.canvas.before:
             Color(0, 0, 0)
             self.bg = Rectangle(
@@ -37,6 +38,7 @@ class Leaderboard(GridLayout):
             self.bind(pos=self.update_bg, size=self.update_bg)
 
     def update_bg(self, *args):
+        """Allows the leaderboard to be scalable when changing window size."""
         self.bg.pos = self.pos
         self.bg.size = self.size
 
