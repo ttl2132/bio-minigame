@@ -87,7 +87,7 @@ class Leaderboard(GridLayout):
         if time:
             for i in range(num_ranks):
                 if (db_lb["initials"][str(i)] == "N/A"
-                    or time < int(db_lb["time"][str(i)])):
+                    or time < float(db_lb["time"][str(i)])):
                     name = App.get_running_app().INITIALS
                     logger.debug(f"Name: {name}")
                     requests.post(
