@@ -34,8 +34,8 @@ Function Files:
 Kivy files (with file extension .kv) will be used for styling and binding the functions from the Python files.
 Classes:
  - main.kv: Landing page for the game.
- - cellid.kv: Landing page for the cellid screen.
- - lb.kv: Landing page for the leaderboard.
+ - game.kv: Landing page for the game screen.
+ - review.kv: Landing page for the review table.
 
 ### Description of the data:
 In order to make this library more modular, a standard prefix will be given to each game (i.e. "cellid" and "krebs"). All of the data will be stored with this prefix.
@@ -59,12 +59,16 @@ The data for the game images will stored as a JSON file, stored as a dictionary 
 - bounds ({str})
 
 The images dictionary has the following keys:
-- source (str)
-- static (bool)
-- bounded (bool)
-- width (float)
-- height (height)
-- location ({str}) optional
+- source: (str)
+- static: (bool)
+- bounded: (bool)
+- width: (float)
+- height: (float)
+- location: ({str}) optional
+
+Static means that this image will always stay in the same place on the screen, regardless of if other images are scrambled.
+Bounded means that this image is contained within a certain area and is not part of the "main body" of the diagram. For example, the cell wall is not bounded, because the cell parts are stacked on top of it.
+
 
 The game JSON that will be loaded will be dependent on what game is selected, indicated as a GAME_PREFIX. The images for a game will be placed in a folder with a name mathing the GAME_PREFIX. An example for cellid.json is shown below.
 
