@@ -21,15 +21,17 @@ Imported Packages:
 
 Tentative Classes:
  - Main: This includes the screen manager that can toggle between the different screens, as well as the landing page for the app.
- - ScreenFactory: This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
- - Leaderboard: This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed. It will also allow the user to input their initials if they have a record that will be stored in the database.
- - LocGenerator: This is a class for generating the locations of the images. This will likely take the most time to complete, due to the various factors that must be considered when placing each image (overlap, static placement, etc.). Furthermore, this will require removing some of the styling information from the .kv files and modifying that information in the Python files instead.
+ - ScreenFactory(Screen): This creates the screens for each image in the images folder. This is meant to be a parent class for individual games to extend.
+ - Leaderboard(GridLayout): This is a database with the leaderboard information hosted on Heroku. It retrieves the information hosted on the site for the scores, and updates them as needed. It will also allow the user to input their initials if they have a record that will be stored in the database.
  - CellScreen(ScreenFactory): This extends the ScreenFactory class, and includes the button behavior based on the cell label. It also contains the prefix for the game required to properly parse the data.
  - Timer: This will create the timer widget that actively updates the time elapsed or resets the timer.
 
+Function Files:
+ - LocGenerator: This is a file that contains functions for generating the locations of the images.
+
 ### Front End
 Kivy files (with file extension .kv) will be used for styling and binding the functions from the Python files.
-Tentative Classes:
+Classes:
  - main.kv: Landing page for the game.
  - cellid.kv: Landing page for the cellid screen.
  - lb.kv: Landing page for the leaderboard.
@@ -38,29 +40,58 @@ Tentative Classes:
 In order to make this library more modular, a standard prefix will be given to each game (i.e. "cellid" and "cellcycle"). All of the data will be stored with this prefix.
 
 The data for the leaderboard will be a CSV file hosted online on Heroku, with the REST call game parameter being the standard prefix.
-- Initials (str): The initials of the record holder.
-- Score (int): The score of the record holder.
+- Game char(50)
+- Initials char(3): The initials of the record holder.
+- Score float: The score of the record holder.
 
-| Initials | Time     |
-|----------|----------|
-| AAA      | 00:00.00 |
-| BBB      | 00:01.00 |
-| CCC      | 00:02.00 |
-| DDD      | 00:03.00 |
-| EEE      | 00:04.00 |
+|  Game  | Initials | Time     |
+|--------|----------|----------|
+| cellid | AAA      | 00:00.00 |
+| cellid | BBB      | 00:01.00 |
+| cellid | CCC      | 00:02.00 |
+| cellid | DDD      | 00:03.00 |
+| cellid | EEE      | 00:04.00 |
 
-The data for the game images will stored as a JSON file, stored as Part_Name (str): File_Path (str). The game JSON that will be loaded will be dependent on what game is selected. The latter two columns represent whether or not that image file is needed for the game. An example for cellid.json is shown below.
+The data for the game images will stored as a JSON file, stored as a dictionary with the following keys:
+- load_order ([str])
+- images ({str})
+- bounds ({str})
+The game JSON that will be loaded will be dependent on what game is selected, indicated as a GAME_PREFIX. The images for a game will be placed in a folder with a name mathing the GAME_PREFIX. An example for cellid.json is shown below.
 
 ```json
 {
-   "Cell Membrane":"images/Cell Membrane.png",
-   "Cell Wall":"images/Cell Wall.png",
-   "Chloroplast":"images/Chloroplast.png",
-   "Cytoplasm":"images/Cytoplasm.png",
-   "Endoplasmic Reticulum":"images/Endoplasmic Reticulum.png",
-   "Mitochondria":"images/Mitochondria.png",
-   "Nucleus":"images/Nucleus.png",
-   "Vacuole":"images/Vacuole.png"
+  "load_order": ["Cell Wall", "Cell Membrane", "Cytoplasm"],
+  "images": {
+    "Cell Membrane": {
+      "source": "Cell Membrane.png",
+      "static": "True",
+      "bounded": "False",
+      "location": {
+        "x": ".15",
+        "y": ".05"
+      },
+      "width": ".7",
+      "height": ".6"
+    },
+    "Nucleus": {
+      "source": "Nucleus.png",
+      "static": "False",
+      "bounded": "True"
+    },
+    "Vacuole": {
+      "source": "Vacuole.png",
+      "static": "False",
+      "bounded": "True",
+      "width": ".2",
+      "height": ".4"
+    }
+  },
+  "bounds": {
+    "x":".2",
+    "y":".1",
+    "width": ".6",
+    "height": ".5"
+  }
 }
 ```
 
@@ -84,7 +115,3 @@ The website https://biomanbio.com/ contains similar games explaining biology con
 
 ## TODO
  - Fully connect REST api for the leaderboard to uvicorn
- - Create a timer widget for the app that can start on tap
- - Create image ordering in json
- - Figure out how to randomly allocate each image without overlap. Includes differentiating parts that can be numerous (i.e. a plant cell can have multiple chloroplasts).
- - Create working reset button

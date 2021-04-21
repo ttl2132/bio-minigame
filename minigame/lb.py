@@ -1,12 +1,10 @@
 from kivy.uix.screenmanager import Screen
 import kivy.properties as props
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from heroku_app.app import HEROKU_URL
 from kivy.graphics import Color, Rectangle
 from loguru import logger
-import random
 import requests
 import pandas as pd
 from kivy.app import App
@@ -22,7 +20,7 @@ class LeaderboardScreen(Screen):
 
     def on_enter(self):
         """Determines the action"""
-        self.lb_widget.generate_leaderboard()
+        self.lb_widget.update()
 
 class Leaderboard(GridLayout):
     """A widget that contains the initials and times for the leaderboard."""
@@ -35,8 +33,9 @@ class Leaderboard(GridLayout):
         if popup:
             self.add_popup_bg()
         self.pos_hint={'center_x':.5, 'center_y': .5}
-        self.add_widget(Label(text='Initials'))
-        self.add_widget(Label(text='Time'))
+        t_size = '25sp'
+        self.add_widget(Label(text='Initials', font_size=t_size))
+        self.add_widget(Label(text='Time', font_size=t_size))
         self.game = App.get_running_app().GAMEID
         self.update()
         self.bg = None
@@ -59,16 +58,22 @@ class Leaderboard(GridLayout):
     def generate_leaderboard(self, lb=None):
         """Used for created the widgets to display in the grid layout"""
         self.clear_widgets()
+        t_size = '25sp'
+        self.add_widget(Label(text='Initials', font_size=t_size))
+        self.add_widget(Label(text='Time', font_size=t_size))
         updated_lb = lb
         if not lb:
             updated_lb = self.get_lb()
         logger.debug(updated_lb)
         updated_lb = pd.DataFrame.from_dict(updated_lb)
         num_ranks = updated_lb.shape[0]
+        t_size = '20sp'
         for i in range(num_ranks):
-            initials_label = Label(text=updated_lb["initials"][str(i)])
+            initials_label = Label(
+                text=updated_lb["initials"][str(i)], font_size=t_size
+                )
             rounded_time = "{:.2f}".format(updated_lb["time"][str(i)])
-            score_label = Label(text=rounded_time)
+            score_label = Label(text=rounded_time, font_size=t_size)
             self.label_refs.append(initials_label)
             self.label_refs.append(score_label)
             self.add_widget(initials_label)
@@ -85,10 +90,9 @@ class Leaderboard(GridLayout):
                     or time < int(db_lb["time"][str(i)])):
                     name = App.get_running_app().INITIALS
                     logger.debug(f"Name: {name}")
-                    lb = requests.post(
+                    requests.post(
                     f"{HEROKU_URL}/scores/{self.game}/{name}/{time}/{i}"
                     )
-                    logger.debug(lb)
         self.generate_leaderboard()
 
     def get_lb(self):

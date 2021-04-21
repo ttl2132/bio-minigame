@@ -44,6 +44,6 @@ class MyApp(App):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
         sm.add_widget(LeaderboardScreen(name='lb'))
-        sm.add_widget(CellScreen(name='cellid'))
+        sm.add_widget(CellScreen(name='game'))
         logger.info("Screen manager started")
         return sm

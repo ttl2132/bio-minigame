@@ -32,6 +32,10 @@ def parse_arguments():
 def run_program():
     "runs the Kivy app"
     args = parse_arguments()
+    if not args.initials:
+        raise Exception("No user initials given.")
+    if not args.gameid:
+        raise Exception("No game id given.")
     if not len(args.initials)==3:
         raise Exception("Initials must be 3 characters long.")
     MyApp(args.gameid, args.initials).run()

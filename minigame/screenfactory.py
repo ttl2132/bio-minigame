@@ -1,7 +1,6 @@
 import json
 from kivy.uix.screenmanager import Screen
 import kivy.properties as props
-from kivy.app import App
 from loguru import logger
 from minigame.imgbutton import ImageButton
 import numpy as np
@@ -40,8 +39,9 @@ class ScreenFactory(Screen):
         for i in range(len(img_locs)):
             count = order[i]
             img_info = img_locs[i]
+            src = f"minigame/images/{self.GAME_PREFIX}/{img_info['source']}"
             image_button = ImageButton(
-                count, img_info["label"], img_info["source"], img_info["loc"],
+                count, img_info["label"], src, img_info["loc"],
                 img_info["size"]
                 )
             self.button_refs.append(image_button)
