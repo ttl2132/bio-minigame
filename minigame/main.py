@@ -1,4 +1,4 @@
-from minigame.cell import CellScreen
+from minigame.gamescreen import GameScreen
 from minigame.lb import LeaderboardScreen
 import kivy
 from kivy.app import App
@@ -44,6 +44,6 @@ class MyApp(App):
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
         sm.add_widget(LeaderboardScreen(name='lb'))
-        sm.add_widget(CellScreen(name='game'))
+        sm.add_widget(GameScreen(name='game', game_prefix=self.GAMEID))
         logger.info("Screen manager started")
         return sm

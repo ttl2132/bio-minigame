@@ -1,0 +1,74 @@
+{
+    "load_order": [],
+    "images": {
+      "a-Ketoglutarate": {
+        "source": "a-Ketoglutarate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "cis-Aconitate": {
+        "source": "a-Ketoglutarate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "Citrate": {
+        "source": "Citrate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "Fumarate": {
+        "source": "Fumarate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "Isocitrate": {
+        "source": "Isocitrate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "L-Malate": {
+        "source": "L-Malate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "Oxaloacetate": {
+        "source": "Oxaloacetate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "Succinate": {
+        "source": "Succinate.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      },
+      "Succinyl-CoA": {
+        "source": "Succinyl-CoA.png",
+        "static": "False",
+        "bounded": "True",
+        "width": ".1",
+        "height": ".1"
+      }
+    },
+    "bounds": {
+    "x":".05",
+    "y":".1",
+    "width": ".9",
+    "height": ".5"
+    }
+}
