@@ -5,7 +5,7 @@ My program will be an interactive mobile game where students can learn biology c
 My program will consist of identification minigames (i.e. identifying the parts of a cell, identifying the parts of the Krebs cycle). The goal of this game is to teach biology concepts in an engaging manner. This is useful to students that may be trying to find the motivation to learn biology.
 
 ### User Input
-To start the program, the user can provide different options to toggle the game they would like to play. Once the game is started, the user may only provide keystrokes or screentouches. If they make a score that is on the leaderboard, they can type their initials as text input.
+To start the program, the user can provide different options to toggle the game they would like to play, as well as enter their initials for if they get on the leaderboard. Once the game is started, the user may only provide keystrokes or screentouches.
 
 ## Description of the code:
 
@@ -106,10 +106,10 @@ The game JSON that will be loaded will be dependent on what game is selected, in
 ```
 
 ### Description of user interaction:
-User can request what game they want to play in the CLI, and then the Kivy window will open.
+User can request what game they want to play in the CLI and enter their initials, and then the Kivy window will open.
 ```
 # example command line interface
-bio_minigame --cell-id
+bio_minigame -g cellid -i TTL
 ```
 
 ### Program Output
@@ -122,6 +122,3 @@ The website https://biomanbio.com/ contains similar games explaining biology con
 1. Get cell memorization game working first.
 2. Add cell cycle game to the options.
 3. Fix styling for the app.
-
-## TODO
- - Fully connect REST api for the leaderboard to uvicorn
