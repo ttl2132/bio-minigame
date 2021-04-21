@@ -1,5 +1,3 @@
-from kivy.uix.screenmanager import Screen
-import kivy.properties as props
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from heroku_app.app import HEROKU_URL
@@ -8,19 +6,6 @@ from loguru import logger
 import requests
 import pandas as pd
 from kivy.app import App
-
-
-class LeaderboardScreen(Screen):
-    """The screen that displays the leaderboard widget."""
-    lb_info = props.StringProperty()
-
-    def __init__(self, **kwargs):
-        super(LeaderboardScreen, self).__init__(**kwargs)
-        self.lb_widget = Leaderboard()
-
-    def on_enter(self):
-        """Determines the action"""
-        self.lb_widget.update()
 
 class Leaderboard(GridLayout):
     """A widget that contains the initials and times for the leaderboard."""

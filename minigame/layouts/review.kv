@@ -1,11 +1,12 @@
-<LeaderboardScreen>:
+<ReviewScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: 'Leaderboard'
+            text: 'Review'
             font_size: '25sp'
-        Leaderboard:
-            size_hint: 1, 2.5
+        ReviewGrid:
+            cols: 4
+            size_hint: 1, 1.75
         AnchorLayout:
             anchor_x: 'center'
             anchor_y: 'bottom'
@@ -13,4 +14,4 @@
                 text: 'Menu'
                 font_size: '30sp'
                 on_press: root.manager.current = 'menu'
-                size_hint: 1, .75
+                size_hint: 1, .5

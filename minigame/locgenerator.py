@@ -16,6 +16,7 @@ def generate_picture_layout(imgs, load_order, bounds):
     bounds (b)
     """
     invalid_layout = True
+    count=0
     while invalid_layout:
         invalid_layout = False
         img_locs = []
@@ -35,10 +36,10 @@ def generate_picture_layout(imgs, load_order, bounds):
                 bl1, tr1 = coords[i]
                 bl2, tr2 = coords[j]
                 if check_overlap(bl1, tr1, bl2, tr2):
-                    logger.debug("Detected overlap")
+                    count += 1
                     invalid_layout = True
                     break
-    logger.debug("Returning non-overlapping")
+    logger.debug(f"Returning non-overlapping, count: {count}")
     return img_locs
 
 

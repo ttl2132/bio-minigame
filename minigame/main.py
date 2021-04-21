@@ -1,5 +1,5 @@
 from minigame.gamescreen import GameScreen
-from minigame.lb import LeaderboardScreen
+from minigame.review import ReviewScreen
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
@@ -43,7 +43,7 @@ class MyApp(App):
         logger.info(f"{self.GAMEID} game chosen")
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
-        sm.add_widget(LeaderboardScreen(name='lb'))
+        sm.add_widget(ReviewScreen(name='review'))
         sm.add_widget(GameScreen(name='game', game_prefix=self.GAMEID))
         logger.info("Screen manager started")
         return sm

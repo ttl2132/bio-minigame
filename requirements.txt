@@ -3,5 +3,4 @@ pandas
 fastAPI
 uvicorn
 loguru
-PyGithub
 psycopg2
